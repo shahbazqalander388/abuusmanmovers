@@ -1,0 +1,243 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "serviceAreas": "Service Areas",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "callNow": "Call Now",
+    "menu": "Menu",
+    "language": "Language"
+  },
+  "hero": {
+    "badge": "PREMIER MOVING COMPANY IN KSA",
+    "title": "Stress-Free Moving & Relocation",
+    "titlePart1": "Stress-Free",
+    "titleHighlight": "Moving",
+    "titlePart2": "& Relocation",
+    "subtitle": "Experience the best and most reliable moving services in Saudi Arabia. We handle your belongings with care, precision, and speed.",
+    "description": "Experience the best and most reliable moving services in Saudi Arabia. We handle your belongings with care, precision, and speed.",
+    "ourServices": "Our Services",
+    "callUs": "Call",
+    "scrollDown": "Scroll Down"
+  },
+  "buttons": {
+    "call": "Call Now",
+    "whatsapp": "WhatsApp Us"
+  },
+  "footer": {
+    "tagline": "Fast, Safe & Professional Moving Services in Saudi Arabia",
+    "description": "We provide reliable, fast, and secure moving and packing services tailored to your needs.",
+    "quickLinks": "Quick Links",
+    "ourServices": "Our Services",
+    "contactUs": "Contact Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "allRightsReserved": "All rights reserved.",
+    "rights": "All rights reserved.",
+    "licenseId": "License ID"
+  },
+  "about": {
+    "pageTitle": "About Us",
+    "breadcrumb": "About Us",
+    "welcomeTo": "Welcome to",
+    "p1": "We are a professional moving and packing company based in Saudi Arabia, dedicated to providing top-notch relocation services. Whether you are moving across the street or across the country, our experienced team ensures a smooth, safe, and stress-free experience.",
+    "p2": "With years of expertise, we have built a reputation for reliability, speed, and utmost care for our clients' belongings. From packing fragile items to transporting heavy furniture, we handle it all with precision.",
+    "qualityService": "Quality Service",
+    "modernFleet": "Modern Fleet",
+    "onTimeDelivery": "On-Time Delivery",
+    "satisfaction": "100% Satisfaction",
+    "licenseTitle": "License Information",
+    "licenseSubtitle": "Officially Licensed & Authorized",
+    "idNumber": "ID Number",
+    "licenseType": "License Type",
+    "heavyTransport": "Heavy Transport",
+    "verifiedBadge": "Government Verified"
+  },
+  "services": {
+    "pageTitle": "Our Services",
+    "breadcrumb": "Services",
+    "whatWeOffer": "What We Offer",
+    "intro": "We provide end-to-end relocation solutions. Our services are designed to cater to all your moving needs with professionalism and care.",
+    "getQuote": "Get a Quote",
+    "items": {
+      "houseShifting": {
+        "title": "House Shifting",
+        "description": "Safe and secure house moving services tailored to your needs."
+      },
+      "apartmentMoving": {
+        "title": "Apartment Moving",
+        "description": "Efficient apartment relocation with careful handling of your belongings."
+      },
+      "villaMoving": {
+        "title": "Villa Moving",
+        "description": "Comprehensive villa moving services for large-scale residential relocations."
+      },
+      "officeRelocation": {
+        "title": "Office Relocation",
+        "description": "Professional office moving with minimal downtime for your business."
+      },
+      "furnitureMoving": {
+        "title": "Furniture Moving",
+        "description": "Specialized furniture transport ensuring no damage during transit."
+      },
+      "packing": {
+        "title": "Packing",
+        "description": "High-quality packing materials and expert packing services."
+      },
+      "loadingUnloading": {
+        "title": "Loading & Unloading",
+        "description": "Heavy lifting handled by our experienced and strong moving crew."
+      },
+      "furnitureAssembly": {
+        "title": "Furniture Assembly & Disassembly",
+        "description": "Expert dismantling and reassembly of all types of furniture."
+      },
+      "heavyTransport": {
+        "title": "Heavy Transport",
+        "description": "Reliable transport for heavy equipment and large items."
+      }
+    }
+  },
+  "serviceAreas": {
+    "pageTitle": "Service Areas",
+    "breadcrumb": "Service Areas",
+    "sectionBadge": "Service Areas",
+    "whereWeOperate": "Where We",
+    "whereWeOperateHighlight": "Operate",
+    "intro": "We proudly provide professional moving and relocation services across the major cities of Saudi Arabia.",
+    "serviceAvailable": "Service Available",
+    "getQuote": "Get a Quote",
+    "ctaTitle": "Moving Anywhere in Saudi Arabia?",
+    "ctaDesc": "No matter where you are in KSA, our professional team is just one call away. We'll take care of everything!",
+    "callNow": "Call Now",
+    "cities": {
+      "riyadh": {
+        "name": "Riyadh",
+        "description": "Complete residential and commercial moving services in the capital city of Saudi Arabia. We cover all districts of Riyadh with fast and reliable relocation."
+      },
+      "jeddah": {
+        "name": "Jeddah",
+        "description": "Expert packing and moving solutions across Jeddah. From apartments to villas, we ensure a smooth transition to your new home or office."
+      },
+      "dammam": {
+        "name": "Dammam",
+        "description": "Trusted moving services in Dammam and surrounding areas. Our professional crew handles every detail of your relocation with care."
+      },
+      "jubail": {
+        "name": "Jubail",
+        "description": "Comprehensive shifting services in Jubail Industrial City. We specialize in both residential and corporate relocations."
+      },
+      "khobar": {
+        "name": "Khobar",
+        "description": "Fast and affordable moving services in Al Khobar. Our experienced team ensures safe and timely delivery of all your belongings."
+      },
+      "dhahran": {
+        "name": "Dhahran",
+        "description": "Professional packing, loading, and transport services in Dhahran. We handle moves of all sizes with precision and dedication."
+      }
+    }
+  },
+  "gallery": {
+    "pageTitle": "Gallery",
+    "breadcrumb": "Gallery",
+    "highlightsTitle": "Moving Service",
+    "highlightsTitleHighlight": "Highlights",
+    "highlightsSubtitle": "What Sets Us Apart",
+    "highlightsIntro": "Discover why thousands of families and businesses trust Abu Usman Movers for their relocation needs across Saudi Arabia.",
+    "photosTitle": "Our Work",
+    "photosSubtitle": "Photo Gallery",
+    "photosIntro": "Browse our gallery to see our professional team in action.",
+    "placeholder": "Image Coming Soon",
+    "addPhoto": "Add Photo",
+    "ctaTitle": "Ready to Experience the Difference?",
+    "ctaDesc": "Contact us today and let our experienced team handle your next move with professionalism and care.",
+    "getFreeQuote": "Get a Free Quote",
+    "highlights": {
+      "expertCrew": {
+        "title": "Expert Moving Crew",
+        "description": "Our trained professionals handle every item with care, from delicate glassware to heavy furniture. We ensure safe transit every time."
+      },
+      "premiumPacking": {
+        "title": "Premium Packing Materials",
+        "description": "We use high-quality packing materials including bubble wrap, custom crates, and heavy-duty boxes to protect your belongings."
+      },
+      "insured": {
+        "title": "Fully Insured Services",
+        "description": "All our moving services are covered by comprehensive insurance, giving you complete peace of mind during your relocation."
+      },
+      "residential": {
+        "title": "Residential Specialists",
+        "description": "Whether it's an apartment, villa, or full house, we specialize in residential moves of all sizes across Saudi Arabia."
+      },
+      "onTime": {
+        "title": "On-Time Guarantee",
+        "description": "We respect your schedule. Our team arrives on time, works efficiently, and ensures delivery within the agreed timeframe."
+      },
+      "support": {
+        "title": "End-to-End Support",
+        "description": "From the first call to the last box unpacked, our dedicated support team is with you at every step of the moving process."
+      }
+    }
+  },
+  "contact": {
+    "pageTitle": "Contact Us",
+    "breadcrumb": "Contact Us",
+    "getInTouch": "Get In Touch",
+    "intro": "We're here to help and answer any question you might have. We look forward to hearing from you!",
+    "ourLocation": "Our Location",
+    "phoneNumber": "Phone Number",
+    "emailAddress": "Email Address",
+    "followUs": "Follow Us",
+    "sendMessage": "Send Us A Message",
+    "yourName": "Your Name",
+    "namePlaceholder": "John Doe",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+966 5X XXX XXXX",
+    "email": "Email Address",
+    "emailPlaceholder": "john@example.com",
+    "yourMessage": "Your Message",
+    "messagePlaceholder": "Tell us about your moving requirements...",
+    "submitButton": "Send Request via WhatsApp"
+  },
+  "home": {
+    "aboutBadge": "About Abu Usman Movers",
+    "aboutTitle": "We Make Your Moving Experience",
+    "aboutTitleHighlight": "Smooth & Easy",
+    "aboutDesc": "As a premier moving company in Saudi Arabia, we understand that relocation can be stressful. That's why our expert team is dedicated to providing seamless, secure, and fast moving solutions for homes, villas, and offices. We treat your belongings as if they were our own.",
+    "aboutFeature1": "100% Safe & Secure Moving",
+    "aboutFeature2": "Professional & Trained Team",
+    "aboutFeature3": "On-Time Delivery",
+    "aboutFeature4": "Affordable Pricing",
+    "discoverMore": "Discover More About Us",
+    "yearsExp": "Years Exp",
+    "servicesBadge": "Our Services",
+    "servicesTitle": "Comprehensive Moving Solutions",
+    "servicesDesc": "We offer a wide range of moving and packing services tailored to meet your specific requirements, ensuring a hassle-free transition to your new space.",
+    "readMore": "Read More",
+    "viewAllServices": "View All Services",
+    "statHappyClients": "Happy Clients",
+    "statSuccessfulMoves": "Successful Moves",
+    "statCitiesCovered": "Cities Covered",
+    "statProfessionalStaff": "Professional Staff",
+    "ctaTitle": "Ready for a Stress-Free Move?",
+    "ctaDesc": "Contact us today for a free quote. Our expert team is ready to assist you 24/7.",
+    "whatsappUs": "WhatsApp Us",
+    "callNow": "Call Now"
+  },
+  "seo": {
+    "homeTitle": "Abu Usman Movers | Fast, Safe & Professional Moving Services in Saudi Arabia",
+    "homeDesc": "Professional moving, packing, and relocation services in Saudi Arabia. Safe, fast, and reliable house shifting, office moving, and furniture transport.",
+    "aboutTitle": "About Us | Abu Usman Movers",
+    "aboutDesc": "Learn more about Abu Usman Movers, the leading moving and packing company in Saudi Arabia.",
+    "servicesTitle": "Our Services | Abu Usman Movers",
+    "servicesDesc": "Comprehensive moving services including house shifting, office relocation, packing, and furniture assembly by Abu Usman Movers.",
+    "serviceAreasTitle": "Service Areas | Abu Usman Movers",
+    "serviceAreasDesc": "Abu Usman Movers operates across major cities of Saudi Arabia including Riyadh, Jeddah, Dammam, Jubail, Khobar, and Dhahran.",
+    "galleryTitle": "Gallery | Abu Usman Movers",
+    "galleryDesc": "Explore the highlights of our moving and packing services. Abu Usman Movers delivers excellence across Saudi Arabia.",
+    "contactTitle": "Contact Us | Abu Usman Movers",
+    "contactDesc": "Get in touch with Abu Usman Movers for a free quote or inquiries about our moving and packing services."
+  }
+}
