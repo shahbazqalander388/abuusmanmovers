@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp, FaFacebookF } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
@@ -45,14 +45,14 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
           aria-hidden="true"
         />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
             {t('contact.pageTitle')}
-          </motion.h1>
-          <motion.nav
+          </m.h1>
+          <m.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -62,7 +62,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
             <span>{t('navbar.home')}</span>
             <span aria-hidden="true">/</span>
             <span className="text-white">{t('contact.breadcrumb')}</span>
-          </motion.nav>
+          </m.nav>
         </div>
         </section>
       )}
@@ -73,7 +73,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
           <div className="flex flex-col lg:flex-row gap-16">
 
             {/* Contact Information */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -149,10 +149,10 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Contact Form */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -174,7 +174,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                         value={formData.name}
                         onChange={handleChange}
                         aria-required="true"
-                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600"
+                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600 text-gray-900"
                         placeholder={t('contact.namePlaceholder')}
                       />
                     </div>
@@ -190,7 +190,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                         value={formData.phone}
                         onChange={handleChange}
                         aria-required="true"
-                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600"
+                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600 text-gray-900"
                         placeholder={t('contact.phonePlaceholder')}
                       />
                     </div>
@@ -205,7 +205,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600 text-gray-900"
                       placeholder={t('contact.emailPlaceholder')}
                     />
                   </div>
@@ -221,7 +221,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                       onChange={handleChange}
                       rows="5"
                       aria-required="true"
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none placeholder:text-gray-600"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none placeholder:text-gray-600 text-gray-900"
                       placeholder={t('contact.messagePlaceholder')}
                     />
                   </div>
@@ -233,7 +233,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                   </button>
                 </form>
               </div>
-            </motion.div>
+            </m.div>
 
           </div>
         </div>

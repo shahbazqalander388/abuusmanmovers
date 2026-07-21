@@ -185,7 +185,7 @@ const GoogleMapComponent = () => {
             <InfoWindow onCloseClick={() => setShowInfoWindow(false)}>
               <div className="p-2 text-gray-900 max-w-[200px]">
                 <p className="font-bold text-sm mb-0.5">Abu Usman Movers</p>
-                <p className="text-xs text-gray-500 mb-1">Heavy Transport</p>
+                <p className="text-xs text-gray-600 mb-1">Heavy Transport</p>
                 <p className="text-xs text-gray-700">Saudi Arabia</p>
               </div>
             </InfoWindow>

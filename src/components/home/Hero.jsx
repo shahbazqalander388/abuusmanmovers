@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaPhoneAlt, FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { COMPANY_DETAILS } from '../../utils/constants';
@@ -98,7 +98,7 @@ const Hero = () => {
 
       <div className="container relative z-10 mx-auto px-4 md:px-6 lg:px-8 pt-20">
         <div className="max-w-3xl">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -130,11 +130,11 @@ const Hero = () => {
                 {t('hero.callUs')} {COMPANY_DETAILS.phone}
               </a>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
 
-      <motion.div
+      <m.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 z-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
@@ -142,7 +142,7 @@ const Hero = () => {
       >
         <span className="text-xs uppercase tracking-widest mb-2 font-semibold">{t('hero.scrollDown')}</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white/70 to-transparent" />
-      </motion.div>
+      </m.div>
     </section>
   );
 };

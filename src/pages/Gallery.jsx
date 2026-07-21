@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaTruckMoving, FaBoxOpen, FaShieldAlt, FaHome, FaClock, FaHandsHelping, FaCamera, FaImages, FaPlay } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
@@ -76,25 +76,25 @@ const GALLERY_ITEMS = [
   },
   {
     filename: 'gallery-video-01_t8sapb.mp4',
-    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590206/gallery-video-01_t8sapb.mp4',
+    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/q_auto,f_auto/v1784590206/gallery-video-01_t8sapb.mp4',
     type: 'video',
     alt: 'Moving team video preview',
   },
   {
     filename: 'gallery-video-02_jb9366.mp4',
-    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590195/gallery-video-02_jb9366.mp4',
+    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/q_auto,f_auto/v1784590195/gallery-video-02_jb9366.mp4',
     type: 'video',
     alt: 'Secure loading process video',
   },
   {
     filename: 'gallery-video-03_jg8xnj.mp4',
-    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590203/gallery-video-03_jg8xnj.mp4',
+    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/q_auto,f_auto/v1784590203/gallery-video-03_jg8xnj.mp4',
     type: 'video',
     alt: 'Truck transport in action',
   },
   {
     filename: 'gallery-video-04_flm4hi.mp4',
-    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590195/gallery-video-04_flm4hi.mp4',
+    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/q_auto,f_auto/v1784590195/gallery-video-04_flm4hi.mp4',
     type: 'video',
     alt: 'Final delivery and setup',
   },
@@ -133,14 +133,14 @@ const Gallery = () => {
           aria-hidden="true"
         />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
             {t('gallery.pageTitle')}
-          </motion.h1>
-          <motion.nav
+          </m.h1>
+          <m.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -150,7 +150,7 @@ const Gallery = () => {
             <span>{t('navbar.home')}</span>
             <span aria-hidden="true">/</span>
             <span className="text-white">{t('gallery.breadcrumb')}</span>
-          </motion.nav>
+          </m.nav>
         </div>
       </section>
 
@@ -158,7 +158,7 @@ const Gallery = () => {
       <section className="py-20 bg-white" aria-label="Photo gallery">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -174,11 +174,11 @@ const Gallery = () => {
               <p className="text-gray-600 text-lg">
                 {t('gallery.photosIntro')}
               </p>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Gallery Grid */}
-          <motion.div
+          <m.div
             className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5"
             variants={containerVariants}
             initial="hidden"
@@ -186,7 +186,7 @@ const Gallery = () => {
             viewport={{ once: true, margin: '-50px' }}
           >
             {galleryItems.map((item) => (
-              <motion.div
+              <m.div
                 key={item.filename}
                 variants={itemVariants}
                 className="group overflow-hidden rounded-[24px] bg-white shadow-sm border border-gray-100 min-h-[280px]"
@@ -229,9 +229,9 @@ const Gallery = () => {
                     </span>
                   </button>
                 )}
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
 
           {activeMedia && (
             <div
@@ -277,18 +277,18 @@ const Gallery = () => {
           )}
 
           {/* Info note */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-10 text-center"
           >
-            <p className="inline-flex items-center gap-2 text-sm text-gray-500 bg-gray-50 border border-gray-200 px-6 py-3 rounded-full">
+            <p className="inline-flex items-center gap-2 text-sm text-gray-600 bg-gray-50 border border-gray-200 px-6 py-3 rounded-full">
               <FaCamera aria-hidden="true" />
               {t('gallery.addPhoto')} — {t('gallery.placeholder')}
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -299,7 +299,7 @@ const Gallery = () => {
 
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -315,10 +315,10 @@ const Gallery = () => {
               <p className="text-gray-600 text-lg">
                 {t('gallery.highlightsIntro')}
               </p>
-            </motion.div>
+            </m.div>
           </div>
 
-          <motion.div
+          <m.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -326,7 +326,7 @@ const Gallery = () => {
             viewport={{ once: true, margin: '-50px' }}
           >
             {HIGHLIGHT_KEYS.map((item) => (
-              <motion.div
+              <m.div
                 key={item.key}
                 variants={itemVariants}
                 className="group relative bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100
@@ -348,16 +348,16 @@ const Gallery = () => {
                     {t(`gallery.highlights.${item.key}.description`)}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       {/* Bottom CTA */}
       <section className="py-16 bg-primary" aria-label="Call to action">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -379,7 +379,7 @@ const Gallery = () => {
             >
               {t('gallery.getFreeQuote')}
             </a>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </>

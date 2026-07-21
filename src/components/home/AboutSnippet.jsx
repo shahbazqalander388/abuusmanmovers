@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { COMPANY_DETAILS } from '../../utils/constants';
@@ -26,7 +26,7 @@ const AboutSnippet = () => {
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
           {/* Images Grid */}
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -37,7 +37,7 @@ const AboutSnippet = () => {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl z-10">
                 <div className="text-center">
                   <span className="block text-2xl font-bold text-accent">10+</span>
-                  <span className="block text-xs font-semibold text-gray-500 uppercase">{t('home.yearsExp')}</span>
+                  <span className="block text-xs font-semibold text-gray-600 uppercase">{t('home.yearsExp')}</span>
                 </div>
               </div>
               <ResponsiveImage
@@ -58,12 +58,14 @@ const AboutSnippet = () => {
                 loading="lazy"
                 widths={[200, 400, 600, 800]}
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 400px"
+                width={800}
+                height={600}
               />
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Text Content */}
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -94,7 +96,7 @@ const AboutSnippet = () => {
               {t('home.discoverMore')}
               <FaArrowRight className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true" />
             </Link>
-          </motion.div>
+          </m.div>
 
         </div>
       </div>

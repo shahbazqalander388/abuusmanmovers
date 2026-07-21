@@ -9,7 +9,8 @@
     "prebuild": "node ./scripts/generate-sitemap.js",
     "generate-sitemap": "node ./scripts/generate-sitemap.js",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lighthouse": "lighthouse http://127.0.0.1:4174 --output json --output-path lighthouse-report-final.json --chrome-flags=\"--headless --no-sandbox\""
   },
   "dependencies": {
     "@react-google-maps/api": "^2.20.8",

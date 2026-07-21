@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 import ResponsiveImage from '../../components/ResponsiveImage';
@@ -12,10 +12,10 @@ const galleryMedia = [  { type: 'image', src: 'https://res.cloudinary.com/dai2g4
   { type: 'image', src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590174/gallery-image-06_oaw9zv.jpg', alt: 'Heavy furniture removal' },
   { type: 'image', src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590173/gallery-image-07_jsymgz.jpg', alt: 'Careful loading of belongings' },
   { type: 'image', src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590175/gallery-image-09_qnups5.jpg', alt: 'Completed residential move' },
-  { type: 'video', src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590206/gallery-video-01_t8sapb.mp4', alt: 'Moving team video preview' },
-  { type: 'video', src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590195/gallery-video-02_jb9366.mp4', alt: 'Secure loading process video' },
-  { type: 'video', src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590203/gallery-video-03_jg8xnj.mp4', alt: 'Truck transport in action' },
-  { type: 'video', src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590195/gallery-video-04_flm4hi.mp4', alt: 'Final delivery and setup' },
+  { type: 'video', src: 'https://res.cloudinary.com/dai2g47e4/video/upload/q_auto,f_auto/v1784590206/gallery-video-01_t8sapb.mp4', alt: 'Moving team video preview' },
+  { type: 'video', src: 'https://res.cloudinary.com/dai2g47e4/video/upload/q_auto,f_auto/v1784590195/gallery-video-02_jb9366.mp4', alt: 'Secure loading process video' },
+  { type: 'video', src: 'https://res.cloudinary.com/dai2g47e4/video/upload/q_auto,f_auto/v1784590203/gallery-video-03_jg8xnj.mp4', alt: 'Truck transport in action' },
+  { type: 'video', src: 'https://res.cloudinary.com/dai2g47e4/video/upload/q_auto,f_auto/v1784590195/gallery-video-04_flm4hi.mp4', alt: 'Final delivery and setup' },
 ];
 
 const LazyVideo = ({ src, alt }) => {
@@ -44,7 +44,7 @@ const GallerySnippet = () => {  return (
     <section id="gallery" className="scroll-mt-24 bg-[#102a4b]/80 py-24" aria-label="Gallery preview">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -53,12 +53,12 @@ const GallerySnippet = () => {  return (
             <p className="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">Gallery</p>
             <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">A glimpse of our moving expertise</h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-200">From household moves to corporate relocations, our team delivers a smooth and secure experience.</p>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {galleryMedia.map((item, index) => (
-            <motion.div
+            <m.div
               key={item.alt}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -79,7 +79,7 @@ const GallerySnippet = () => {  return (
                 />
               ) : (
                 <LazyVideo src={item.src} alt={item.alt} />
-              )}            </motion.div>
+              )}            </m.div>
           ))}
         </div>
 

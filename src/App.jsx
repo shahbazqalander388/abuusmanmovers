@@ -2,8 +2,12 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { useTranslation, I18nextProvider } from 'react-i18next';
+import { LazyMotion } from 'framer-motion';
 import i18n, { isRTL } from './i18n';
 import Layout from './components/Layout';
+
+// Load Framer Motion animation features lazily (async) to avoid blocking paint
+const loadFeatures = () => import('framer-motion').then((m) => m.domAnimation);
 
 // Lazy load pages for code splitting
 const Home = lazy(() => import('./pages/Home'));
@@ -45,6 +49,7 @@ const PageLoader = () => (
 
 function App() {
   return (
+    <LazyMotion features={loadFeatures} strict>
     <I18nextProvider i18n={i18n}>
       <HelmetProvider>
         <Router>
@@ -65,6 +70,7 @@ function App() {
         </Router>
       </HelmetProvider>
     </I18nextProvider>
+    </LazyMotion>
   );
 }
 

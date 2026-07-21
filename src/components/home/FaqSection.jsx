@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
 
 export const faqs = [
@@ -24,7 +24,7 @@ const FaqSection = () => {
     <section id="faq" className="scroll-mt-24 bg-[#102a4b]/90 py-24" aria-label="Frequently asked questions">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
@@ -33,14 +33,14 @@ const FaqSection = () => {
             <p className="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">FAQ</p>
             <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">Frequently asked questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-slate-200">Everything you need to know before planning your move with Abu Usman Movers.</p>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="mx-auto max-w-3xl space-y-4">
           {faqs.map((item, index) => {
             const isOpen = openIndex === index;
             return (
-              <motion.div
+              <m.div
                 key={item.question}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ const FaqSection = () => {
                   <FaChevronDown className={`text-accent transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {isOpen && <div className="px-6 pb-6 text-gray-600">{item.answer}</div>}
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

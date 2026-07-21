@@ -56,6 +56,10 @@
   a:focus {
     color: #e0f2fe;
   }
+
+  input, textarea, select {
+    color: #111827;
+  }
 }
 
 /* Custom Utilities */

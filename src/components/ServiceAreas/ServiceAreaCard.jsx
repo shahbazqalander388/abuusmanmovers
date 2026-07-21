@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaMapMarkerAlt, FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { COMPANY_DETAILS } from '../../utils/constants';
@@ -15,7 +15,7 @@ const ServiceAreaCard = ({ city }) => {
   const cityDesc = t(`serviceAreas.cities.${city.key}.description`);
 
   return (
-    <motion.div
+    <m.div
       variants={cardVariants}
       className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm
                  hover:-translate-y-3 hover:shadow-2xl transition-all duration-300
@@ -80,7 +80,7 @@ const ServiceAreaCard = ({ city }) => {
           {t('serviceAreas.getQuote')}
         </a>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaCheckCircle, FaAward, FaTruck, FaClock, FaIdCard, FaShieldAlt, FaStar } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
@@ -24,14 +24,14 @@ const About = () => {
           aria-hidden="true"
         />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
             {t('about.pageTitle')}
-          </motion.h1>
-          <motion.nav
+          </m.h1>
+          <m.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -41,7 +41,7 @@ const About = () => {
             <span>{t('navbar.home')}</span>
             <span aria-hidden="true">/</span>
             <span className="text-white">{t('about.breadcrumb')}</span>
-          </motion.nav>
+          </m.nav>
         </div>
       </section>
 
@@ -51,7 +51,7 @@ const About = () => {
           <div className="flex flex-col lg:flex-row gap-16 items-center">
 
             {/* Image side */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
@@ -69,10 +69,10 @@ const About = () => {
               </div>
               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl -z-10" aria-hidden="true" />
               <div className="absolute -top-10 -left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10" aria-hidden="true" />
-            </motion.div>
+            </m.div>
 
             {/* Text side */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -103,7 +103,7 @@ const About = () => {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -114,7 +114,7 @@ const About = () => {
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -ml-40 -mb-40 pointer-events-none" aria-hidden="true" />
 
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -127,9 +127,9 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               {t('about.licenseTitle')}
             </h2>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -145,7 +145,7 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                   {/* ID Number */}
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -156,17 +156,17 @@ const About = () => {
                       <FaIdCard aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                      <p className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">
                         {t('about.idNumber')}
                       </p>
                       <p className="text-2xl md:text-3xl font-extrabold text-primary tracking-wider">
                         {COMPANY_DETAILS.licenseId}
                       </p>
                     </div>
-                  </motion.div>
+                  </m.div>
 
                   {/* License Type */}
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -177,18 +177,18 @@ const About = () => {
                       <FaTruck aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">
+                      <p className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">
                         {t('about.licenseType')}
                       </p>
                       <p className="text-2xl md:text-3xl font-extrabold text-orange-600">
                         {t('about.heavyTransport')}
                       </p>
                     </div>
-                  </motion.div>
+                  </m.div>
                 </div>
 
                 {/* Verified Badge */}
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -205,10 +205,10 @@ const About = () => {
                     ))}
                     <span className="ml-2 font-bold text-gray-700">5.0</span>
                   </div>
-                </motion.div>
+                </m.div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </>

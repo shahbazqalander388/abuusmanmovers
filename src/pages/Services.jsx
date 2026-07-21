@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaTruckMoving, FaBuilding, FaHome, FaBoxOpen, FaCouch, FaWhatsapp } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
@@ -57,14 +57,14 @@ const Services = () => {
           aria-hidden="true"
         />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
             {t('services.pageTitle')}
-          </motion.h1>
-          <motion.nav
+          </m.h1>
+          <m.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -74,7 +74,7 @@ const Services = () => {
             <span>{t('navbar.home')}</span>
             <span aria-hidden="true">/</span>
             <span className="text-white">{t('services.breadcrumb')}</span>
-          </motion.nav>
+          </m.nav>
         </div>
       </section>
 
@@ -90,14 +90,14 @@ const Services = () => {
             </p>
           </div>
 
-          <motion.div
+          <m.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             {SERVICE_KEYS.map((key) => (
-              <motion.div
+              <m.div
                 key={key}
                 variants={itemVariants}
                 className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
@@ -124,9 +124,9 @@ const Services = () => {
                   <FaWhatsapp className="text-lg" aria-hidden="true" />
                   {t('services.getQuote')}
                 </a>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </>

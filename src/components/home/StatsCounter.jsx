@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { m, useSpring, useTransform } from 'framer-motion';
 import { FaSmile, FaTruck, FaMapMarkerAlt, FaUsers } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
@@ -17,7 +17,7 @@ const AnimatedNumber = ({ end, suffix }) => {
     }
   }, [inView, end, springValue, hasAnimated]);
 
-  return <motion.span ref={ref}>{displayValue}</motion.span>;
+  return <m.span ref={ref}>{displayValue}</m.span>;
 };
 
 const StatsCounter = () => {

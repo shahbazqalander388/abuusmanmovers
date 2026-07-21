@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import ServiceAreaCard from './ServiceAreaCard';
 import { SERVICE_AREAS_DATA } from './serviceAreasData';
@@ -18,7 +18,7 @@ const ServiceAreas = ({ animateOnScroll = true }) => {
   return (
     <div className="w-full">
       {/* Section Header */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={animateOnScroll ? { opacity: 1, y: 0 } : undefined}
         animate={!animateOnScroll ? { opacity: 1, y: 0 } : undefined}
@@ -36,10 +36,10 @@ const ServiceAreas = ({ animateOnScroll = true }) => {
         <p className="text-slate-200 text-lg">
           {t('serviceAreas.intro')}
         </p>
-      </motion.div>
+      </m.div>
 
       {/* Cards Grid */}
-      <motion.div
+      <m.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         variants={containerVariants}
         initial="hidden"
@@ -50,7 +50,7 @@ const ServiceAreas = ({ animateOnScroll = true }) => {
         {SERVICE_AREAS_DATA.map((city) => (
           <ServiceAreaCard key={city.key} city={city} />
         ))}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

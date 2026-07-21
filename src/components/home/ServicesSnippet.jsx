@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaTruckMoving, FaBuilding, FaHome, FaBoxOpen, FaCouch, FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
@@ -50,7 +50,7 @@ const ServicesSnippet = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -63,11 +63,11 @@ const ServicesSnippet = () => {
             <p className="text-slate-200 text-lg">
               {t('home.servicesDesc')}
             </p>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Services Grid */}
-        <motion.div 
+        <m.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
@@ -75,7 +75,7 @@ const ServicesSnippet = () => {
           viewport={{ once: true, margin: "-50px" }}
         >
           {displayServiceKeys.map((key) => (
-            <motion.div 
+            <m.div 
               key={key}
               variants={itemVariants}
               className="bg-[#0f2b5a]/90 rounded-2xl p-8 shadow-sm border border-slate-700 card-hover group flex flex-col justify-between"
@@ -99,9 +99,9 @@ const ServicesSnippet = () => {
                 {t('home.readMoreAbout', { service: t(`services.items.${key}.title`) })}{' '}
                 <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true" />
               </Link>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* View All Button */}
         <div className="text-center mt-12">

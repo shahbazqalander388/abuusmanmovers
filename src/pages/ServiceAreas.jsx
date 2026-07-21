@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
@@ -25,14 +25,14 @@ const ServiceAreasPage = () => {
           aria-hidden="true"
         />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
             {t('serviceAreas.pageTitle')}
-          </motion.h1>
-          <motion.nav
+          </m.h1>
+          <m.nav
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -42,7 +42,7 @@ const ServiceAreasPage = () => {
             <span>{t('navbar.home')}</span>
             <span aria-hidden="true">/</span>
             <span className="text-white">{t('serviceAreas.breadcrumb')}</span>
-          </motion.nav>
+          </m.nav>
         </div>
       </section>
 
@@ -59,7 +59,7 @@ const ServiceAreasPage = () => {
       {/* Bottom CTA */}
       <section className="py-16 bg-primary" aria-label="Call to action">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -80,7 +80,7 @@ const ServiceAreasPage = () => {
               <FaPhoneAlt aria-hidden="true" />
               {t('serviceAreas.callNow')}: {COMPANY_DETAILS.phone}
             </a>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </>
