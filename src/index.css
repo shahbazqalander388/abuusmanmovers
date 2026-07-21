@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: local('Inter');
+}
+
 @theme {
   --color-primary: #0a4275;
   --color-primary-light: #1664af;
@@ -15,26 +23,49 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    background: linear-gradient(120deg, #061629, #0b233c, #081b31);
   }
   
   body {
-    @apply font-sans antialiased text-gray-800 bg-gray-50;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #ffffff;
+    background: transparent;
     overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+    background: transparent;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-gray-900;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  a {
+    color: #7dd3fc;
+    text-decoration-skip-ink: auto;
+    transition: color 0.2s ease;
+  }
+
+  a:hover,
+  a:focus {
+    color: #e0f2fe;
   }
 }
 
 /* Custom Utilities */
 @layer utilities {
   .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+    @apply bg-white/20 backdrop-blur-md border border-white/10 shadow-lg;
   }
   
   .glass-dark {
-    @apply bg-gray-900/80 backdrop-blur-md border border-gray-700/50 shadow-xl;
+    @apply bg-[#11284d]/90 backdrop-blur-md border border-slate-500/20 shadow-xl;
   }
   
   .text-gradient {

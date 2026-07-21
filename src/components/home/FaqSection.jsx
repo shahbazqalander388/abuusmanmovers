@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
 
-const faqs = [
+export const faqs = [
   {
     question: 'How far in advance should I book a move?',
     answer: 'We recommend booking as early as possible, especially for peak seasonal periods. Early booking helps us reserve the ideal time and crew for your move.',
@@ -21,7 +21,7 @@ const FaqSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-white py-24" aria-label="Frequently asked questions">
+    <section id="faq" className="scroll-mt-24 bg-[#102a4b]/90 py-24" aria-label="Frequently asked questions">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <motion.div
@@ -30,9 +30,9 @@ const FaqSection = () => {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
           >
-            <h4 className="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">FAQ</h4>
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">Frequently asked questions</h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">Everything you need to know before planning your move with Abu Usman Movers.</p>
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">FAQ</p>
+            <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">Frequently asked questions</h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-200">Everything you need to know before planning your move with Abu Usman Movers.</p>
           </motion.div>
         </div>
 

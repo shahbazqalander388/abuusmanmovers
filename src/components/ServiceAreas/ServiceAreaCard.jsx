@@ -74,12 +74,9 @@ const ServiceAreaCard = ({ city }) => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Get a quote for moving services in ${cityName}`}
-          className={`inline-flex items-center justify-center gap-2 text-sm font-semibold text-white
-                      bg-gradient-to-r ${city.gradient} px-5 py-3 rounded-xl
-                      hover:shadow-lg hover:shadow-accent/30 hover:-translate-y-0.5
-                      transition-all duration-300 group/btn`}
+          className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white bg-green-700 px-5 py-3 rounded-xl hover:bg-green-800 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
         >
-          <FaWhatsapp className="text-base group-hover/btn:scale-110 transition-transform" aria-hidden="true" />
+          <FaWhatsapp className="text-base transition-transform" aria-hidden="true" />
           {t('serviceAreas.getQuote')}
         </a>
       </div>

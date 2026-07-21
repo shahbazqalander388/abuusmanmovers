@@ -27,18 +27,18 @@ const FloatingButtons = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+    <div className="fixed inset-x-0 bottom-4 z-50 flex items-center justify-center gap-4 px-4 sm:bottom-6 sm:right-6 sm:left-auto sm:px-0 md:flex-col md:items-end md:justify-end">
       {/* WhatsApp Button */}
       <a
         href={COMPANY_DETAILS.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl hover:shadow-green-500/30"
+        className="group relative flex h-12 w-12 items-center justify-center rounded-full bg-green-700 text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl hover:shadow-green-700/30 sm:h-14 sm:w-14"
         aria-label="Chat on WhatsApp"
       >
         <div className="absolute inset-0 rounded-full animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] bg-green-400 opacity-75 group-hover:animate-none"></div>
         <FaWhatsapp className="relative z-10 text-3xl" aria-hidden="true" />
-        <span className="absolute right-16 rounded bg-black/75 px-2 py-1 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap pointer-events-none">
+        <span className="absolute right-16 rounded bg-black/75 px-2 py-1 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap pointer-events-none hidden sm:block">
           {t('home.whatsappUs')}
         </span>
       </a>
@@ -46,11 +46,11 @@ const FloatingButtons = () => {
       {/* Phone Button */}
       <a
         href={`tel:${COMPANY_DETAILS.phone.replace(/[^0-9+]/g, '')}`}
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl hover:shadow-primary/30"
+        className="group relative flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform hover:scale-110 hover:shadow-xl hover:shadow-primary/30 sm:h-14 sm:w-14"
         aria-label="Call Us"
       >
         <FaPhoneAlt className="text-xl" aria-hidden="true" />
-        <span className="absolute right-16 rounded bg-black/75 px-2 py-1 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap pointer-events-none">
+        <span className="absolute right-16 rounded bg-black/75 px-2 py-1 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100 whitespace-nowrap pointer-events-none hidden sm:block">
           {t('home.callNow')}
         </span>
       </a>

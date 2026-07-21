@@ -26,14 +26,14 @@ const ServiceAreas = ({ animateOnScroll = true }) => {
         transition={{ duration: 0.6 }}
         className="text-center max-w-3xl mx-auto mb-16"
       >
-        <h4 className="text-accent font-semibold tracking-wider uppercase mb-2">
+        <p className="text-accent font-semibold tracking-wider uppercase mb-2">
           {t('serviceAreas.sectionBadge')}
-        </h4>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+        </p>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
           {t('serviceAreas.whereWeOperate')}{' '}
           <span className="text-accent">{t('serviceAreas.whereWeOperateHighlight')}</span>
         </h2>
-        <p className="text-gray-600 text-lg">
+        <p className="text-slate-200 text-lg">
           {t('serviceAreas.intro')}
         </p>
       </motion.div>

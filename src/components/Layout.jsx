@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import FloatingButtons from './FloatingButtons';
+
+const FloatingButtons = lazy(() => import('./FloatingButtons'));
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex min-h-screen flex-col font-sans">
+    <div className="flex min-h-screen flex-col font-sans bg-[#07192d] text-white">
       <Navbar />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 bg-transparent">{children}</main>
       <Footer />
-      <FloatingButtons />
+      <Suspense fallback={null}>
+        <FloatingButtons />
+      </Suspense>
     </div>
   );
 };

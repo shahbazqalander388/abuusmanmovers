@@ -1,37 +1,47 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaArrowRight } from 'react-icons/fa';
-import Particles from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim';
 import { useTranslation } from 'react-i18next';
 import { COMPANY_DETAILS } from '../../utils/constants';
 
+const ParticlesLayer = lazy(() => import('@tsparticles/react').then((module) => ({ default: module.default })));
+
 const Hero = () => {
-  const [init, setInit] = useState(false);
+  const [showParticles, setShowParticles] = useState(false);
   const { t } = useTranslation();
 
+  useEffect(() => {
+    const enableParticles = () => setShowParticles(true);
+    if ('requestIdleCallback' in window) {
+      const idleId = window.requestIdleCallback(enableParticles, { timeout: 2000 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+    const timer = window.setTimeout(enableParticles, 1500);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   const particlesInit = useCallback(async (engine) => {
+    const { loadSlim } = await import('@tsparticles/slim');
     await loadSlim(engine);
-    setInit(true);
   }, []);
 
   const particlesOptions = useMemo(() => ({
     fullScreen: false,
-    background: { color: { value: "transparent" } },
+    background: { color: { value: 'transparent' } },
     fpsLimit: 60,
     interactivity: {
       events: {
-        onHover: { enable: true, mode: "repulse" },
+        onHover: { enable: true, mode: 'repulse' },
       },
       modes: {
         repulse: { distance: 120, duration: 0.4 },
       },
     },
     particles: {
-      color: { value: ["#60a5fa", "#93c5fd", "#ffffff"] },
+      color: { value: ['#60a5fa', '#93c5fd', '#ffffff'] },
       links: {
-        color: "#60a5fa",
+        color: '#60a5fa',
         distance: 150,
         enable: true,
         opacity: 0.15,
@@ -40,10 +50,10 @@ const Hero = () => {
       move: {
         enable: true,
         speed: 1.2,
-        direction: "none",
+        direction: 'none',
         random: true,
         straight: false,
-        outModes: { default: "out" },
+        outModes: { default: 'out' },
       },
       number: {
         density: { enable: true, area: 900 },
@@ -53,7 +63,7 @@ const Hero = () => {
         value: { min: 0.1, max: 0.4 },
         animation: { enable: true, speed: 0.8, minimumValue: 0.1 },
       },
-      shape: { type: "circle" },
+      shape: { type: 'circle' },
       size: {
         value: { min: 1, max: 3 },
       },
@@ -67,24 +77,25 @@ const Hero = () => {
       className="relative h-screen min-h-[600px] w-full flex items-center justify-center overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Gradient Background */}
       <div
         className="absolute inset-0"
         style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)' }}
         aria-hidden="true"
       />
 
-      {/* Particles Layer */}
       <div className="absolute inset-0 z-[1]" aria-hidden="true">
-        <Particles
-          id="hero-particles"
-          init={particlesInit}
-          options={particlesOptions}
-          className="w-full h-full"
-        />
+        {showParticles ? (
+          <Suspense fallback={null}>
+            <ParticlesLayer
+              id="hero-particles"
+              init={particlesInit}
+              options={particlesOptions}
+              className="w-full h-full"
+            />
+          </Suspense>
+        ) : null}
       </div>
 
-      {/* Content */}
       <div className="container relative z-10 mx-auto px-4 md:px-6 lg:px-8 pt-20">
         <div className="max-w-3xl">
           <motion.div
@@ -113,7 +124,6 @@ const Hero = () => {
               </Link>
               <a
                 href={`tel:${COMPANY_DETAILS.phone.replace(/[^0-9+]/g, '')}`}
-                aria-label={`Call us at ${COMPANY_DETAILS.phone}`}
                 className="group flex items-center justify-center gap-2 rounded-full bg-white/10 px-8 py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white hover:text-primary border border-white/20"
               >
                 <FaPhoneAlt className="transition-transform group-hover:rotate-12" aria-hidden="true" />
@@ -124,7 +134,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 z-10"
         animate={{ y: [0, 10, 0] }}

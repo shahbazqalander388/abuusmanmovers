@@ -11,7 +11,7 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section id="why-choose-us" className="scroll-mt-24 bg-white py-24" aria-label="Why choose us">
+    <section id="why-choose-us" className="scroll-mt-24 bg-[#102a4b]/90 py-24" aria-label="Why choose us">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="mb-12 max-w-3xl text-center">
           <motion.div
@@ -20,9 +20,9 @@ const WhyChooseUs = () => {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
           >
-            <h4 className="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">Why Choose Us</h4>
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">Trusted moving solutions built around your comfort</h2>
-            <p className="text-lg text-gray-600">We combine local expertise, careful planning, and professional service to make every relocation stress-free.</p>
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">Why Choose Us</p>
+            <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">Trusted moving solutions built around your comfort</h2>
+            <p className="text-lg text-slate-200">We combine local expertise, careful planning, and professional service to make every relocation stress-free.</p>
           </motion.div>
         </div>
 

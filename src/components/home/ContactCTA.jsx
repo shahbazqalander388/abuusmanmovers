@@ -30,7 +30,7 @@ const ContactCTA = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Send WhatsApp message for a moving quote"
-              className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg"
+              className="flex items-center justify-center gap-2 bg-green-700 hover:bg-green-800 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 shadow-lg"
             >
               <FaWhatsapp className="text-xl" aria-hidden="true" />
               {t('home.whatsappUs')}

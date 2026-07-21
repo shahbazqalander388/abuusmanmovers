@@ -23,7 +23,7 @@ const Footer = () => {
 
           {/* Company Info */}
           <div className="flex flex-col gap-4">
-            <Link to="/" className="inline-block" aria-label="Abu Usman Movers - Home">
+            <Link to="/" className="inline-block">
               <div className="flex flex-col">
                 <span className="text-2xl font-bold leading-none text-white">ABU USMAN</span>
                 <span className="text-sm font-semibold tracking-wider text-accent-light">MOVERS</span>
@@ -32,7 +32,7 @@ const Footer = () => {
             <p className="text-sm leading-relaxed text-gray-400">
               {t('footer.tagline')}. {t('footer.description')}
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-400">
               {t('footer.licenseId')}: <span className="text-accent-light font-semibold">{COMPANY_DETAILS.licenseId}</span>
             </p>
             <div className="flex gap-4 mt-2">
@@ -126,7 +126,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>&copy; {currentYear} {COMPANY_DETAILS.name}. {t('footer.allRightsReserved')}</p>
           <div className="flex gap-4">
             <Link to="#" className="hover:text-white transition-colors">{t('footer.privacyPolicy')}</Link>

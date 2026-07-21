@@ -216,6 +216,7 @@
     "servicesTitle": "Comprehensive Moving Solutions",
     "servicesDesc": "We offer a wide range of moving and packing services tailored to meet your specific requirements, ensuring a hassle-free transition to your new space.",
     "readMore": "Read More",
+    "readMoreAbout": "Read more about {{service}}",
     "viewAllServices": "View All Services",
     "statHappyClients": "Happy Clients",
     "statSuccessfulMoves": "Successful Moves",

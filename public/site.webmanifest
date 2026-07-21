@@ -1,0 +1,15 @@
+{
+  "name": "Abu Usman Movers",
+  "short_name": "AbuUsman",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#061629",
+  "theme_color": "#0a4275",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

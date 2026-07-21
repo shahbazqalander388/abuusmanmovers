@@ -90,33 +90,70 @@ const GoogleMapComponent = () => {
 
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
 
+  const mapsUrl = "https://maps.app.goo.gl/6esV6tzR6TXkTHoR6";
+
+  // If there's no API key or it's a placeholder, don't attempt to load the Maps JS SDK.
+  // This prevents the Google Maps "InvalidKey" console warning during development.
+  if (!apiKey || apiKey === 'YOUR_API_KEY') {
+    // Fallback UI when API key is missing: show a simple embedded Google Maps iframe (no API key required)
+    const embedSrc = `https://www.google.com/maps?q=${center.lat},${center.lng}&z=12&output=embed`;
+    return (
+      <div className="relative w-full h-[300px] md:h-[400px] bg-gray-900 rounded-[20px] shadow-2xl p-0 overflow-hidden border border-gray-800">
+        <iframe
+          title="Abu Usman Movers - Location"
+          src={embedSrc}
+          className="w-full h-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-4">
+          <div className="bg-black/60 rounded px-3 py-2 text-sm text-white">
+            Abu Usman Movers — Serving Riyadh, Jeddah, Dammam and more
+          </div>
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold py-2 px-3 rounded-xl transition-all shadow-lg shadow-accent/20"
+          >
+            <FaExternalLinkAlt className="text-xs" />
+            Open in Google Maps
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
   });
 
-  const mapsUrl = "https://maps.app.goo.gl/6esV6tzR6TXkTHoR6";
-
-  if (loadError || !apiKey || apiKey === 'YOUR_API_KEY') {
-    // Elegant fallback UI when API key is missing or load fails
+  if (loadError) {
+    const embedSrc = `https://www.google.com/maps?q=${center.lat},${center.lng}&z=12&output=embed`;
     return (
-      <div className="relative w-full h-[300px] md:h-[400px] bg-gray-900 rounded-[20px] shadow-2xl flex flex-col items-center justify-center p-6 text-center border border-gray-800">
-        <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent text-3xl mb-4">
-          🗺️
+      <div className="relative w-full h-[300px] md:h-[400px] bg-gray-900 rounded-[20px] shadow-2xl p-0 overflow-hidden border border-gray-800">
+        <iframe
+          title="Abu Usman Movers - Location"
+          src={embedSrc}
+          className="w-full h-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-4">
+          <div className="bg-black/60 rounded px-3 py-2 text-sm text-white">
+            We couldn't load the interactive map — open in Google Maps instead
+          </div>
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold py-2 px-3 rounded-xl transition-all shadow-lg shadow-accent/20"
+          >
+            <FaExternalLinkAlt className="text-xs" />
+            Open in Google Maps
+          </a>
         </div>
-        <h3 className="text-xl font-bold text-white mb-2">Abu Usman Movers Location</h3>
-        <p className="text-gray-400 max-w-md text-sm mb-6">
-          We operate all over Saudi Arabia, including Riyadh, Jeddah, Dammam, and other cities.
-        </p>
-        <a
-          href={mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-accent/20"
-        >
-          <FaExternalLinkAlt className="text-xs" />
-          Open in Google Maps
-        </a>
       </div>
     );
   }
@@ -147,7 +184,7 @@ const GoogleMapComponent = () => {
           {showInfoWindow && (
             <InfoWindow onCloseClick={() => setShowInfoWindow(false)}>
               <div className="p-2 text-gray-900 max-w-[200px]">
-                <h4 className="font-bold text-sm mb-0.5">Abu Usman Movers</h4>
+                <p className="font-bold text-sm mb-0.5">Abu Usman Movers</p>
                 <p className="text-xs text-gray-500 mb-1">Heavy Transport</p>
                 <p className="text-xs text-gray-700">Saudi Arabia</p>
               </div>

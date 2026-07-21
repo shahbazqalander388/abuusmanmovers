@@ -4,6 +4,7 @@ import { FaTruckMoving, FaBoxOpen, FaShieldAlt, FaHome, FaClock, FaHandsHelping,
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import { COMPANY_DETAILS } from '../utils/constants';
+import ResponsiveImage from '../components/ResponsiveImage';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -24,20 +25,79 @@ const HIGHLIGHT_KEYS = [
   { key: 'support', icon: <FaHandsHelping />, color: 'from-emerald-500 to-emerald-700' },
 ];
 
-const GALLERY_FILES = [
-  'gallery-image-01.jpeg',
-  'gallery-image-02.jpeg',
-  'gallery-image-03.jpeg',
-  'gallery-image-04.jpeg',
-  'gallery-image-05.jpeg',
-  'gallery-image-06.jpeg',
-  'gallery-image-07.jpeg',
-  'gallery-image-08.jpeg',
-  'gallery-image-09.jpeg',
-  'gallery-video-01.mp4',
-  'gallery-video-02.mp4',
-  'gallery-video-03.mp4',
-  'gallery-video-04.mp4',
+const GALLERY_ITEMS = [
+  {
+    filename: 'gallery-image-01_k2znzs.jpg',
+    src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590172/gallery-image-01_k2znzs.jpg',
+    type: 'image',
+    alt: 'Professional movers loading furniture',
+  },
+  {
+    filename: 'gallery-image-02_oply7y.jpg',
+    src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590172/gallery-image-02_oply7y.jpg',
+    type: 'image',
+    alt: 'Carefully packed moving boxes',
+  },
+  {
+    filename: 'gallery-image-03_qc3flt.jpg',
+    src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590173/gallery-image-03_qc3flt.jpg',
+    type: 'image',
+    alt: 'Team preparing for office relocation',
+  },
+  {
+    filename: 'gallery-image-04_kogsg8.jpg',
+    src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590173/gallery-image-04_kogsg8.jpg',
+    type: 'image',
+    alt: 'Moving services in progress',
+  },
+  {
+    filename: 'gallery-image-05_h5z1jm.jpg',
+    src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590173/gallery-image-05_h5z1jm.jpg',
+    type: 'image',
+    alt: 'Secure packing and transport',
+  },
+  {
+    filename: 'gallery-image-06_oaw9zv.jpg',
+    src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590174/gallery-image-06_oaw9zv.jpg',
+    type: 'image',
+    alt: 'Heavy furniture removal',
+  },
+  {
+    filename: 'gallery-image-07_jsymgz.jpg',
+    src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590173/gallery-image-07_jsymgz.jpg',
+    type: 'image',
+    alt: 'Careful loading of belongings',
+  },
+  {
+    filename: 'gallery-image-09_qnups5.jpg',
+    src: 'https://res.cloudinary.com/dai2g47e4/image/upload/v1784590175/gallery-image-09_qnups5.jpg',
+    type: 'image',
+    alt: 'Completed residential move',
+  },
+  {
+    filename: 'gallery-video-01_t8sapb.mp4',
+    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590206/gallery-video-01_t8sapb.mp4',
+    type: 'video',
+    alt: 'Moving team video preview',
+  },
+  {
+    filename: 'gallery-video-02_jb9366.mp4',
+    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590195/gallery-video-02_jb9366.mp4',
+    type: 'video',
+    alt: 'Secure loading process video',
+  },
+  {
+    filename: 'gallery-video-03_jg8xnj.mp4',
+    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590203/gallery-video-03_jg8xnj.mp4',
+    type: 'video',
+    alt: 'Truck transport in action',
+  },
+  {
+    filename: 'gallery-video-04_flm4hi.mp4',
+    src: 'https://res.cloudinary.com/dai2g47e4/video/upload/v1784590195/gallery-video-04_flm4hi.mp4',
+    type: 'video',
+    alt: 'Final delivery and setup',
+  },
 ];
 
 const imageExtensions = ['jpg', 'jpeg', 'png', 'webp'];
@@ -51,18 +111,9 @@ const Gallery = () => {
 
   const galleryItems = useMemo(
     () =>
-      GALLERY_FILES.map((filename) => {
-        const extension = filename.split('.').pop().toLowerCase();
-        const isImage = imageExtensions.includes(extension);
-        const isVideo = videoExtensions.includes(extension);
-
-        return {
-          filename,
-          src: `/gallery/${encodeURIComponent(filename)}`,
-          type: isImage ? 'image' : isVideo ? 'video' : 'unknown',
-          alt: filename.replace(/\.[^/.]+$/, ''),
-        };
-      }),
+      GALLERY_ITEMS.map((item) => ({
+        ...item,
+      })),
     [],
   );
 
@@ -113,10 +164,10 @@ const Gallery = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h4 className="text-accent font-semibold tracking-wider uppercase mb-2 flex items-center justify-center gap-2">
+              <p className="text-accent font-semibold tracking-wider uppercase mb-2 flex items-center justify-center gap-2">
                 <FaImages aria-hidden="true" />
                 {t('gallery.photosSubtitle')}
-              </h4>
+              </p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 {t('gallery.photosTitle')}
               </h2>
@@ -147,11 +198,13 @@ const Gallery = () => {
                     className="relative block w-full h-full overflow-hidden rounded-[24px]"
                     aria-label={t('gallery.openMedia', { name: item.alt })}
                   >
-                    <img
+                    <ResponsiveImage
                       src={item.src}
                       alt={item.alt}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+                      widths={[360, 720, 1200]}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   </button>
                 ) : (
@@ -164,7 +217,7 @@ const Gallery = () => {
                     <video
                       controls
                       poster={VIDEO_POSTER}
-                      preload="metadata"
+                      preload="none"
                       className="w-full h-full object-cover"
                     >
                       <source src={item.src} type={`video/${item.filename.split('.').pop().toLowerCase()}`} />
@@ -201,10 +254,13 @@ const Gallery = () => {
                   ✕
                 </button>
                 {activeMedia.type === 'image' ? (
-                  <img
+                  <ResponsiveImage
                     src={activeMedia.src}
                     alt={activeMedia.alt}
                     className="w-full max-h-[80vh] object-contain bg-black"
+                    loading="eager"
+                    widths={[800, 1200, 1920]}
+                    sizes="100vw"
                   />
                 ) : (
                   <video
@@ -249,9 +305,9 @@ const Gallery = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h4 className="text-accent font-semibold tracking-wider uppercase mb-2">
+              <p className="text-accent font-semibold tracking-wider uppercase mb-2">
                 {t('gallery.highlightsSubtitle')}
-              </h4>
+              </p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                 {t('gallery.highlightsTitle')}{' '}
                 <span className="text-accent">{t('gallery.highlightsTitleHighlight')}</span>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaCheckCircle, FaAward, FaTruck, FaClock, FaIdCard, FaShieldAlt, FaStar } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { COMPANY_DETAILS } from '../utils/constants';
 
 const About = () => {
@@ -57,11 +58,13 @@ const About = () => {
               className="w-full lg:w-1/2 relative"
             >
               <div className="rounded-3xl overflow-hidden shadow-2xl relative z-10 border-8 border-white">
-                <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                <ResponsiveImage
+                  src="https://res.cloudinary.com/dai2g47e4/image/upload/v1784590172/gallery-image-01_k2znzs.jpg"
                   alt="Abu Usman Movers professional team"
                   className="w-full h-auto object-cover"
                   loading="lazy"
+                  widths={[600, 1000, 1600]}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1200px"
                 />
               </div>
               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-accent/10 rounded-full blur-3xl -z-10" aria-hidden="true" />
@@ -118,9 +121,9 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-2xl mx-auto mb-12"
           >
-            <h4 className="text-accent font-semibold tracking-wider uppercase mb-2">
+            <p className="text-accent font-semibold tracking-wider uppercase mb-2">
               {t('about.licenseSubtitle')}
-            </h4>
+            </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               {t('about.licenseTitle')}
             </h2>

@@ -34,7 +34,7 @@ const StatsCounter = () => {
     <section className="relative py-20 overflow-hidden" aria-label="Company statistics">
       {/* Background Image & Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1586528116311-ad8ed7e66a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80")' }}
         aria-hidden="true"
       >

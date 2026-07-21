@@ -216,6 +216,7 @@
     "servicesTitle": "حلول نقل شاملة",
     "servicesDesc": "نقدم مجموعة واسعة من خدمات النقل والتغليف المصممة لتلبية متطلباتك المحددة، لضمان انتقال سهل إلى مكانك الجديد.",
     "readMore": "اقرأ المزيد",
+    "readMoreAbout": "اقرأ المزيد عن {{service}}",
     "viewAllServices": "عرض جميع الخدمات",
     "statHappyClients": "عميل سعيد",
     "statSuccessfulMoves": "عملية نقل ناجحة",

@@ -22,7 +22,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="scroll-mt-24 bg-gray-50 py-24" aria-label="Testimonials">
+    <section id="testimonials" className="scroll-mt-24 bg-[#102a4b]/80 py-24" aria-label="Testimonials">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <motion.div
@@ -31,9 +31,9 @@ const Testimonials = () => {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
           >
-            <h4 className="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">Testimonials</h4>
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">What our clients say</h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">Trusted by families and businesses across Saudi Arabia for reliable moving support.</p>
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent">Testimonials</p>
+            <h2 className="mb-4 text-3xl font-bold text-white md:text-4xl">What our clients say</h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-200">Trusted by families and businesses across Saudi Arabia for reliable moving support.</p>
           </motion.div>
         </div>
 

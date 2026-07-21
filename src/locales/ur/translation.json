@@ -228,6 +228,7 @@
     "servicesTitle": "جامع نقل و حمل حل",
     "servicesDesc": "ہم آپ کی مخصوص ضروریات کو پورا کرنے کے لیے نقل و حمل اور پیکنگ خدمات کی ایک وسیع رینج پیش کرتے ہیں۔",
     "readMore": "مزید پڑھیں",
+    "readMoreAbout": "{{service}} کے بارے میں مزید پڑھیں",
     "viewAllServices": "تمام خدمات دیکھیں",
     "statHappyClients": "خوش گاہک",
     "statSuccessfulMoves": "کامیاب منتقلیاں",

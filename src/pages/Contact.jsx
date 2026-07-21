@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp, FaFacebookF } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
 import SEO from '../components/SEO';
-import GoogleMap from '../components/GoogleMap';
 import { COMPANY_DETAILS } from '../utils/constants';
+
+const GoogleMap = lazy(() => import('../components/GoogleMap'));
 
 const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => {
   const { t } = useTranslation();
+  const { ref: mapRef, inView: mapInView } = useInView({ triggerOnce: true, rootMargin: '300px' });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,7 +68,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
       )}
 
       {/* Main Content */}
-      <section id={sectionId} className={`scroll-mt-24 py-20 bg-gray-50 ${compact ? 'pt-16' : ''}`} aria-label="Contact information and form">
+      <section id={sectionId} className={`scroll-mt-24 py-20 bg-[#102a4b]/90 ${compact ? 'pt-16' : ''}`} aria-label="Contact information and form">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-16">
 
@@ -76,8 +79,8 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
               transition={{ duration: 0.6 }}
               className="w-full lg:w-1/3"
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{t('contact.getInTouch')}</h2>
-              <p className="text-gray-600 mb-10 text-lg">
+              <h2 className="text-3xl font-bold text-white mb-6">{t('contact.getInTouch')}</h2>
+              <p className="text-slate-200 mb-10 text-lg">
                 {t('contact.intro')}
               </p>
 
@@ -87,8 +90,8 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                     <FaMapMarkerAlt />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">{t('contact.ourLocation')}</h4>
-                    <p className="text-gray-600 leading-relaxed">{COMPANY_DETAILS.address}</p>
+                    <h3 className="text-xl font-bold text-white mb-1">{t('contact.ourLocation')}</h3>
+                    <p className="text-slate-200 leading-relaxed">{COMPANY_DETAILS.address}</p>
                   </div>
                 </div>
 
@@ -97,10 +100,10 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                     <FaPhoneAlt />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">{t('contact.phoneNumber')}</h4>
+                    <h3 className="text-xl font-bold text-white mb-1">{t('contact.phoneNumber')}</h3>
                     <a
                       href={`tel:${COMPANY_DETAILS.phone.replace(/[^0-9+]/g, '')}`}
-                      className="text-gray-600 hover:text-primary transition-colors block mb-1"
+                      className="text-slate-200 hover:text-primary transition-colors block mb-1"
                     >
                       {COMPANY_DETAILS.phone}
                     </a>
@@ -112,10 +115,10 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                     <FaEnvelope />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">{t('contact.emailAddress')}</h4>
+                    <h3 className="text-xl font-bold text-white mb-1">{t('contact.emailAddress')}</h3>
                     <a
                       href={`mailto:${COMPANY_DETAILS.email}`}
-                      className="text-gray-600 hover:text-primary transition-colors break-all"
+                      className="text-slate-200 hover:text-primary transition-colors break-all"
                     >
                       {COMPANY_DETAILS.email}
                     </a>
@@ -124,7 +127,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
               </div>
 
               <div className="mt-10 pt-10 border-t border-gray-200">
-                <h4 className="text-lg font-bold text-gray-900 mb-4">{t('contact.followUs')}</h4>
+                <h3 className="text-lg font-bold text-white mb-4">{t('contact.followUs')}</h3>
                 <div className="flex gap-4">
                   <a
                     href={COMPANY_DETAILS.facebook}
@@ -140,7 +143,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Contact us on WhatsApp"
-                    className="w-12 h-12 rounded-full bg-green-500 text-white flex items-center justify-center hover:-translate-y-1 hover:shadow-lg transition-all"
+                    className="w-12 h-12 rounded-full bg-green-700 text-white flex items-center justify-center hover:-translate-y-1 hover:shadow-lg transition-all"
                   >
                     <FaWhatsapp className="text-2xl" aria-hidden="true" />
                   </a>
@@ -171,7 +174,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                         value={formData.name}
                         onChange={handleChange}
                         aria-required="true"
-                        className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600"
                         placeholder={t('contact.namePlaceholder')}
                       />
                     </div>
@@ -187,7 +190,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                         value={formData.phone}
                         onChange={handleChange}
                         aria-required="true"
-                        className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600"
                         placeholder={t('contact.phonePlaceholder')}
                       />
                     </div>
@@ -202,7 +205,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all placeholder:text-gray-600"
                       placeholder={t('contact.emailPlaceholder')}
                     />
                   </div>
@@ -218,7 +221,7 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
                       onChange={handleChange}
                       rows="5"
                       aria-required="true"
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none"
+                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all resize-none placeholder:text-gray-600"
                       placeholder={t('contact.messagePlaceholder')}
                     />
                   </div>
@@ -237,9 +240,15 @@ const Contact = ({ compact = false, showSeo = true, sectionId = 'contact' }) => 
       </section>
 
       {/* Interactive Google Map */}
-      <section className="scroll-mt-24 px-4 py-8 md:px-6 lg:px-8 bg-gray-50" aria-label="Our location on Google Maps">
+      <section ref={mapRef} className="scroll-mt-24 px-4 py-8 md:px-6 lg:px-8 bg-[#102a4b]/80" aria-label="Our location on Google Maps">
         <div className="container mx-auto">
-          <GoogleMap />
+          {mapInView ? (
+            <Suspense fallback={<div className="h-[300px] md:h-[400px] rounded-[20px] bg-gray-900/80 animate-pulse" aria-hidden="true" />}>
+              <GoogleMap />
+            </Suspense>
+          ) : (
+            <div className="h-[300px] md:h-[400px] rounded-[20px] bg-gray-900/80 animate-pulse" aria-hidden="true" />
+          )}
         </div>
       </section>
     </>
