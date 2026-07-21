@@ -27,7 +27,7 @@ const FloatingButtons = () => {
   };
 
   return (
-    <div className="fixed inset-x-0 bottom-4 z-50 flex items-center justify-center gap-4 px-4 sm:bottom-6 sm:right-6 sm:left-auto sm:px-0 md:flex-col md:items-end md:justify-end">
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end justify-end gap-3 px-0 md:bottom-6 md:right-6 md:flex-row md:items-end md:justify-end md:gap-4">
       {/* WhatsApp Button */}
       <a
         href={COMPANY_DETAILS.whatsapp}
