@@ -89,12 +89,17 @@ const GoogleMapComponent = () => {
   const [showInfoWindow, setShowInfoWindow] = useState(true);
 
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
-
+  const isConfiguredKey = Boolean(apiKey && apiKey !== 'YOUR_API_KEY');
   const mapsUrl = "https://maps.app.goo.gl/6esV6tzR6TXkTHoR6";
+
+  const { isLoaded, loadError } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: isConfiguredKey ? apiKey : '',
+  });
 
   // If there's no API key or it's a placeholder, don't attempt to load the Maps JS SDK.
   // This prevents the Google Maps "InvalidKey" console warning during development.
-  if (!apiKey || apiKey === 'YOUR_API_KEY') {
+  if (!isConfiguredKey) {
     // Fallback UI when API key is missing: show a simple embedded Google Maps iframe (no API key required)
     const embedSrc = `https://www.google.com/maps?q=${center.lat},${center.lng}&z=12&output=embed`;
     return (
@@ -123,11 +128,6 @@ const GoogleMapComponent = () => {
       </div>
     );
   }
-
-  const { isLoaded, loadError } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: apiKey,
-  });
 
   if (loadError) {
     const embedSrc = `https://www.google.com/maps?q=${center.lat},${center.lng}&z=12&output=embed`;

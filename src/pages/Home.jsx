@@ -2,7 +2,8 @@ import React, { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import Hero from '../components/home/Hero';
-import FaqSection, { faqs as homeFaqs } from '../components/home/FaqSection';
+import FaqSection from '../components/home/FaqSection';
+import { HIGH_CONVERTING_FAQS } from '../data/seoSchemaData';
 
 const AboutSnippet = lazy(() => import('../components/home/AboutSnippet'));
 const ServicesSnippet = lazy(() => import('../components/home/ServicesSnippet'));
@@ -23,7 +24,7 @@ const Home = () => {
         title={t('seo.homeTitle')} 
         description={t('seo.homeDesc')} 
         path="/"
-        faq={homeFaqs}
+        faq={HIGH_CONVERTING_FAQS}
       />
       <Hero />
       <LazySection><AboutSnippet /></LazySection>

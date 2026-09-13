@@ -100,8 +100,6 @@ const GALLERY_ITEMS = [
   },
 ];
 
-const imageExtensions = ['jpg', 'jpeg', 'png', 'webp'];
-const videoExtensions = ['mp4', 'webm', 'mov'];
 
 const VIDEO_POSTER = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720"><rect width="1280" height="720" fill="#0f172a"/><circle cx="640" cy="360" r="110" fill="#111b36"/><polygon points="600,520 600,200 860,360" fill="#fff"/></svg>';
 

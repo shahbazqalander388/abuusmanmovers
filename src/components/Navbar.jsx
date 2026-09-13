@@ -10,6 +10,7 @@ const navItems = [
   { nameKey: 'navbar.about', path: '/', sectionId: 'about' },
   { nameKey: 'navbar.services', path: '/', sectionId: 'services' },
   { nameKey: 'navbar.serviceAreas', path: '/', sectionId: 'service-areas' },
+  { nameKey: 'navbar.districts', path: '/districts', sectionId: null },
   { nameKey: 'navbar.gallery', path: '/', sectionId: 'gallery' },
   { nameKey: 'navbar.contact', path: '/', sectionId: 'contact' },
 ];
@@ -143,7 +144,13 @@ const Navbar = () => {
     setActiveSection(sectionId);
   };
 
-  const handleNavClick = (sectionId) => {
+  const handleNavClick = (sectionId, path = '/') => {
+    if (path && path !== '/') {
+      navigate(path);
+      setIsOpen(false);
+      return;
+    }
+
     if (location.pathname !== '/') {
       navigate('/');
       setTimeout(() => scrollToSection(sectionId), 120);
@@ -166,7 +173,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <button type="button" onClick={() => handleNavClick('top')} className="flex items-center gap-2">
+          <button type="button" onClick={() => handleNavClick('top', '/')} className="flex items-center gap-2">
             <div className="flex flex-col">
               <span className="text-2xl font-bold leading-none text-white">
                 ABU USMAN
@@ -181,12 +188,14 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-6">
             <ul className="flex items-center gap-5" role="menubar">
               {navItems.map((link) => {
-                const isActive = activeSection === link.sectionId;
+                const isActive = link.path === '/districts'
+                  ? location.pathname.startsWith('/districts')
+                  : activeSection === link.sectionId;
                 return (
-                  <li key={link.sectionId} role="none">
+                  <li key={link.nameKey} role="none">
                     <button
                       type="button"
-                      onClick={() => handleNavClick(link.sectionId)}
+                      onClick={() => handleNavClick(link.sectionId, link.path)}
                       role="menuitem"
                       className={`relative font-medium transition-colors text-sm ${
                           scrolled
@@ -286,12 +295,14 @@ const Navbar = () => {
 
         <ul className="flex flex-col p-5 gap-2 flex-1" role="menu">
           {navItems.map((link) => {
-            const isActive = activeSection === link.sectionId;
+            const isActive = link.path === '/districts'
+              ? location.pathname.startsWith('/districts')
+              : activeSection === link.sectionId;
             return (
-              <li key={link.sectionId} role="none">
+              <li key={link.nameKey} role="none">
                 <button
                   type="button"
-                  onClick={() => handleNavClick(link.sectionId)}
+                  onClick={() => handleNavClick(link.sectionId, link.path)}
                   role="menuitem"
                   className={`block w-full text-left py-3 px-4 text-base font-medium rounded-xl transition-colors ${
                     isActive

@@ -30,6 +30,7 @@ export const NAV_LINKS = [
   { nameKey: "navbar.about", path: "/about" },
   { nameKey: "navbar.services", path: "/services" },
   { nameKey: "navbar.serviceAreas", path: "/service-areas" },
+  { nameKey: "navbar.districts", path: "/districts" },
   { nameKey: "navbar.gallery", path: "/gallery" },
   { nameKey: "navbar.contact", path: "/contact" },
 ];

@@ -4,17 +4,32 @@ import { FaFacebookF, FaWhatsapp, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 
 import { useTranslation } from 'react-i18next';
 import { COMPANY_DETAILS, NAV_LINKS } from '../utils/constants';
 
-const SERVICE_KEYS = [
-  'houseShifting',
-  'apartmentMoving',
-  'villaMoving',
-  'officeRelocation',
-  'furnitureMoving',
+const SERVICE_LINKS = [
+  { key: 'houseShifting', path: '/house-moving' },
+  { key: 'villaMoving', path: '/villa-moving' },
+  { key: 'furnitureMoving', path: '/furniture-moving' },
+  { key: 'officeRelocation', path: '/office-relocation' },
+  { key: 'packing', path: '/packing-services' },
+  { key: 'furnitureAssembly', path: '/furniture-assembly' },
+];
+
+const RIYADH_FOOTER_DISTRICTS = [
+  { name: 'Al Malqa', nameAr: 'الملقا', slug: 'al-malqa' },
+  { name: 'Al Narjis', nameAr: 'النرجس', slug: 'al-narjis' },
+  { name: 'Al Yasmin', nameAr: 'الياسمين', slug: 'al-yasmin' },
+  { name: 'Al Olaya', nameAr: 'العليا', slug: 'al-olaya' },
+  { name: 'Al Sahafa', nameAr: 'الصحافة', slug: 'al-sahafa' },
+  { name: 'Al Rawdah', nameAr: 'الروضة', slug: 'al-rawdah' },
+  { name: 'Al Nakheel', nameAr: 'النخيل', slug: 'al-nakheel' },
+  { name: 'Hittin', nameAr: 'حطين', slug: 'hittin' },
+  { name: 'Al Aqiq', nameAr: 'العقيق', slug: 'al-aqiq' },
+  { name: 'Al Hamra', nameAr: 'الحمراء', slug: 'al-hamra' },
 ];
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentYear = new Date().getFullYear();
+  const isAr = i18n.language === 'ar';
 
   return (
     <footer className="bg-gray-900 pt-16 pb-8 text-gray-300" role="contentinfo">
@@ -74,17 +89,17 @@ const Footer = () => {
             </ul>
           </nav>
 
-          {/* Services */}
+          {/* Core Services Links */}
           <nav aria-label="Footer services links">
             <h3 className="mb-6 text-lg font-semibold text-white relative inline-block">
               {t('footer.ourServices')}
               <span className="absolute -bottom-2 left-0 h-1 w-12 bg-accent rounded" aria-hidden="true" />
             </h3>
             <ul className="flex flex-col gap-3">
-              {SERVICE_KEYS.map((key) => (
-                <li key={key}>
-                  <Link to="/services" className="transition-colors hover:text-accent-light hover:underline">
-                    {t(`services.items.${key}.title`)}
+              {SERVICE_LINKS.map((s) => (
+                <li key={s.path}>
+                  <Link to={s.path} className="transition-colors hover:text-accent-light hover:underline">
+                    {t(`services.items.${s.key}.title`)}
                   </Link>
                 </li>
               ))}
@@ -125,8 +140,33 @@ const Footer = () => {
 
         </div>
 
+        {/* Riyadh Districts Quick Links Bar for Internal SEO Linking */}
+        <div className="mt-10 pt-8 border-t border-gray-800">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-gray-400">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-slate-200">
+                {isAr ? 'أحياء الرياض المغطاة:' : 'Riyadh Districts Served:'}
+              </span>
+              <Link to="/districts" className="text-accent hover:underline">
+                {isAr ? '(عرض الكل)' : '(View All)'}
+              </Link>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              {RIYADH_FOOTER_DISTRICTS.map((d) => (
+                <Link
+                  key={d.slug}
+                  to={`/districts/${d.slug}`}
+                  className="hover:text-accent-light transition-colors"
+                >
+                  {isAr ? d.nameAr : d.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Copyright */}
-        <div className="mt-12 border-t border-gray-800 pt-8 text-center text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="mt-8 border-t border-gray-800/60 pt-6 text-center text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>&copy; {currentYear} {COMPANY_DETAILS.name}. {t('footer.allRightsReserved')}</p>
           <div className="flex gap-4">
             <Link to="#" className="hover:text-white transition-colors">{t('footer.privacyPolicy')}</Link>

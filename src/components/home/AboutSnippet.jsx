@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-import { COMPANY_DETAILS } from '../../utils/constants';
 import ResponsiveImage from '../../components/ResponsiveImage';
 
 const AboutSnippet = () => {

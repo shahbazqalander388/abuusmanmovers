@@ -16,6 +16,9 @@ const Services = lazy(() => import('./pages/Services'));
 const ServiceAreasPage = lazy(() => import('./pages/ServiceAreas'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Contact = lazy(() => import('./pages/Contact'));
+const DistrictsHub = lazy(() => import('./pages/DistrictsHub'));
+const DistrictDetail = lazy(() => import('./pages/DistrictDetail'));
+const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -62,6 +65,15 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/service-areas" element={<ServiceAreasPage />} />
+                <Route path="/districts" element={<DistrictsHub />} />
+                <Route path="/districts/:slug" element={<DistrictDetail />} />
+                <Route path="/house-moving" element={<ServiceDetail serviceSlug="house-moving" />} />
+                <Route path="/villa-moving" element={<ServiceDetail serviceSlug="villa-moving" />} />
+                <Route path="/furniture-moving" element={<ServiceDetail serviceSlug="furniture-moving" />} />
+                <Route path="/office-relocation" element={<ServiceDetail serviceSlug="office-relocation" />} />
+                <Route path="/packing-services" element={<ServiceDetail serviceSlug="packing-services" />} />
+                <Route path="/furniture-assembly" element={<ServiceDetail serviceSlug="furniture-assembly" />} />
+                <Route path="/services/:slug" element={<ServiceDetail />} />
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/contact" element={<Contact />} />
               </Routes>
