@@ -1,14 +1,24 @@
 export const COMPANY_DETAILS = {
   name: "Abu Usman Movers",
+  nameAr: "شركة ابو عثمان لنقل العفش وتغليف الأثاث",
   tagline: "Fast, Safe & Professional Moving Services in Saudi Arabia",
   phone: "+966 058 223 0098",
-  whatsapp: "https://wa.me/9660582230098",
+  phoneRaw: "+966582230098",
+  whatsapp: "https://wa.me/966582230098",
   email: "abuusman.movers966@gmail.com",
-  googleMaps: "https://maps.app.goo.gl/6esV6tzR6TXkTHoR6",
-  // Embed URL extracted from the Google Maps short link
-  googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.1234567890!2d46.7756753!3d24.7135517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890f489a65%3A0xd1cd2b81ac5ea4ef!2sAbu%20Usman%20Movers!5e0!3m2!1sen!2ssa!4v1720000000000!5m2!1sen!2ssa",
+  googleMaps: "https://www.google.com/maps?q=27.0055,49.6582",
+  googleMapsEmbed: "https://www.google.com/maps?q=27.0055,49.6582&z=14&output=embed",
   facebook: "https://www.facebook.com/share/18vGdA4kgF/",
-  address: "Saudi Arabia",
+  address: "4356 Riad, 8000, Jubail City Center, Al Jubayl 35514, Saudi Arabia",
+  streetAddress: "4356 Riad, 8000, Jubail City Center",
+  addressLocality: "Al Jubayl",
+  addressRegion: "Eastern Province",
+  postalCode: "35514",
+  addressCountry: "SA",
+  geo: {
+    lat: 27.0055,
+    lng: 49.6582,
+  },
   licenseId: "2507934160",
   licenseType: "Heavy Transport",
 };
@@ -36,12 +46,12 @@ export const NAV_LINKS = [
 ];
 
 export const SERVICE_AREAS = [
-  { key: "riyadh", icon: "🕌" },
-  { key: "jeddah", icon: "🌊" },
-  { key: "dammam", icon: "🏭" },
   { key: "jubail", icon: "⚙️" },
   { key: "khobar", icon: "🌆" },
   { key: "dhahran", icon: "🏙️" },
+  { key: "dammam", icon: "🏭" },
+  { key: "jeddah", icon: "🌊" },
+  { key: "riyadh", icon: "🕌" },
 ];
 
 export const LANGUAGES = [

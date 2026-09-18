@@ -5,22 +5,26 @@ import { COMPANY_DETAILS } from '../utils/constants';
 import { BASE_URL, buildFullJsonLdGraph } from '../data/seoSchemaData';
 
 const DEFAULT_KEYWORDS = [
-  'movers and packers in riyadh',
-  'movers and packers saudi arabia',
-  'نقل عفش بالرياض',
-  'شركة نقل اثاث بالرياض',
-  'دينا نقل عفش',
-  'فك وتركيب اثاث',
-  'تغليف اثاث',
-  'house shifting riyadh',
+  'movers and packers in jubail',
+  'jubail movers',
+  'نقل عفش بالجبيل',
+  'شركة نقل اثاث بالجبيل',
+  'دينا نقل عفش بالجبيل',
+  'نقل اثاث بالجبيل الصناعية',
+  'نقل عفش الجبيل البلد',
+  'فك وتركيب اثاث بالجبيل',
+  'تغليف اثاث بالجبيل',
+  'movers and packers eastern province',
+  'نقل اثاث بالمنطقة الشرقية',
+  'نقل عفش بالدمام والخبر',
+  'نقل عفش من الجبيل الى الرياض',
+  'house shifting jubail',
   'furniture moving ksa',
-  'villa relocation',
-  'office movers riyadh',
   'abu usman movers',
 ];
 
 const DEFAULT_IMAGE =
-  'https://res.cloudinary.com/dai2g47e4/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1784590173/gallery-image-03_qc3flt.jpg';
+  'https://abuusmanmovers.com/images/og-abu-usman.jpg';
 
 const SEO = ({
   title,
@@ -40,9 +44,9 @@ const SEO = ({
   const canonicalUrl = `${BASE_URL}${normalizedPath === '/' ? '' : normalizedPath}`;
 
   const defaultTitle =
-    'Movers and Packers in Riyadh & Saudi Arabia | Abu Usman Movers | House & Furniture Relocation';
+    'Movers and Packers in Jubail & Eastern Province | Abu Usman Movers | House & Furniture Relocation';
   const defaultDesc =
-    'Movers and packers in Riyadh & Saudi Arabia: House shifting, furniture dismantling & assembly, bubble wrap packing, 24/7 Dina trucks & instant WhatsApp booking.';
+    'Professional movers and packers in Jubail & Eastern Province: House shifting, furniture dismantling & assembly, bubble wrap packing, 24/7 Dina trucks & instant WhatsApp booking.';
 
   const currentTitle = title
     ? title.includes('Abu Usman')
@@ -59,9 +63,11 @@ const SEO = ({
     ? keywords
     : DEFAULT_KEYWORDS.join(', ');
 
-  const lat = district?.lat || 24.7136;
-  const lng = district?.lng || 46.6753;
-  const placeName = district ? `${district.name}, Riyadh, Saudi Arabia` : 'Riyadh, Saudi Arabia';
+  const lat = district?.geo?.lat || district?.lat || COMPANY_DETAILS.coordinates.lat;
+  const lng = district?.geo?.lng || district?.lng || COMPANY_DETAILS.coordinates.lng;
+  const placeName = district
+    ? `${district.nameEn || district.name}, ${district.zone || 'Eastern Province'}, Saudi Arabia`
+    : 'Al Jubail, Eastern Province, Saudi Arabia';
 
   const fullSchema = buildFullJsonLdGraph({
     path: normalizedPath,
@@ -82,7 +88,7 @@ const SEO = ({
       <meta name="robots" content={robots} />
 
       {/* Local & Geo SEO Tags */}
-      <meta name="geo.region" content="SA-01" />
+      <meta name="geo.region" content="SA-04" />
       <meta name="geo.placename" content={placeName} />
       <meta name="geo.position" content={`${lat};${lng}`} />
       <meta name="ICBM" content={`${lat}, ${lng}`} />

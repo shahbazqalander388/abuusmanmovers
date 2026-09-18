@@ -20,12 +20,54 @@ const DistrictsHub = lazy(() => import('./pages/DistrictsHub'));
 const DistrictDetail = lazy(() => import('./pages/DistrictDetail'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 
-// Scroll to top on route change
+// Scroll to top or target hash element on route/hash change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const hash = window.location.hash;
+    if (hash) {
+      const targetId = hash.replace('#', '');
+      let attempts = 0;
+      const maxAttempts = 20;
+
+      const tryScroll = () => {
+        const target = document.getElementById(targetId);
+        if (target) {
+          const navOffset = 90;
+          const topPosition = target.getBoundingClientRect().top + window.scrollY - navOffset;
+          window.scrollTo({ top: topPosition, behavior: 'smooth' });
+        } else if (attempts < maxAttempts) {
+          attempts++;
+          setTimeout(tryScroll, 100);
+        }
+      };
+
+      tryScroll();
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const target = document.getElementById(hash.replace('#', ''));
+        if (target) {
+          const navOffset = 90;
+          const topPosition = target.getBoundingClientRect().top + window.scrollY - navOffset;
+          window.scrollTo({ top: topPosition, behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   return null;
 };
 

@@ -4,27 +4,6 @@
 
 export const SERVICE_AREAS_DATA = [
   {
-    key: "riyadh",
-    emoji: "🕌",
-    gradient: "from-blue-600 to-blue-800",
-    lightGradient: "from-blue-50 to-blue-100",
-    iconColor: "text-blue-600",
-  },
-  {
-    key: "jeddah",
-    emoji: "🌊",
-    gradient: "from-cyan-600 to-cyan-800",
-    lightGradient: "from-cyan-50 to-cyan-100",
-    iconColor: "text-cyan-600",
-  },
-  {
-    key: "dammam",
-    emoji: "🏭",
-    gradient: "from-indigo-600 to-indigo-800",
-    lightGradient: "from-indigo-50 to-indigo-100",
-    iconColor: "text-indigo-600",
-  },
-  {
     key: "jubail",
     emoji: "⚙️",
     gradient: "from-sky-600 to-sky-800",
@@ -44,5 +23,26 @@ export const SERVICE_AREAS_DATA = [
     gradient: "from-blue-700 to-indigo-800",
     lightGradient: "from-blue-50 to-indigo-100",
     iconColor: "text-blue-700",
+  },
+  {
+    key: "dammam",
+    emoji: "🏭",
+    gradient: "from-indigo-600 to-indigo-800",
+    lightGradient: "from-indigo-50 to-indigo-100",
+    iconColor: "text-indigo-600",
+  },
+  {
+    key: "jeddah",
+    emoji: "🌊",
+    gradient: "from-cyan-600 to-cyan-800",
+    lightGradient: "from-cyan-50 to-cyan-100",
+    iconColor: "text-cyan-600",
+  },
+  {
+    key: "riyadh",
+    emoji: "🕌",
+    gradient: "from-blue-600 to-blue-800",
+    lightGradient: "from-blue-50 to-blue-100",
+    iconColor: "text-blue-600",
   },
 ];

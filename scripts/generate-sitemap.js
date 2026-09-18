@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { ALL_LOCATIONS } from '../src/data/jubailLocations.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,18 +22,15 @@ const sitemapEntries = [
   { path: '/packing-services', changefreq: 'weekly', priority: '0.9' },
   { path: '/furniture-assembly', changefreq: 'weekly', priority: '0.9' },
 
-  // District Hub & Riyadh Districts
+  // Jubail District & Regional Coverage Hub
   { path: '/districts', changefreq: 'weekly', priority: '0.9' },
-  { path: '/districts/al-malqa', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/al-narjis', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/al-yasmin', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/al-olaya', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/al-sahafa', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/al-rawdah', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/al-nakheel', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/hittin', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/al-aqiq', changefreq: 'weekly', priority: '0.85' },
-  { path: '/districts/al-hamra', changefreq: 'weekly', priority: '0.85' },
+
+  // Dynamic Jubail Districts & Regional Commercial Cities
+  ...ALL_LOCATIONS.map((loc) => ({
+    path: `/districts/${loc.slug}`,
+    changefreq: 'weekly',
+    priority: loc.isDistrict ? '0.85' : '0.80',
+  })),
 
   // Core Pages
   { path: '/service-areas', changefreq: 'weekly', priority: '0.85' },

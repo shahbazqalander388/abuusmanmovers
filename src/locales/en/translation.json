@@ -4,7 +4,7 @@
     "about": "About",
     "services": "Services",
     "serviceAreas": "Service Areas",
-    "districts": "Riyadh Districts",
+    "districts": "Jubail & Service Areas",
     "gallery": "Gallery",
     "contact": "Contact",
     "callNow": "Call Now",
@@ -128,7 +128,7 @@
       },
       "jubail": {
         "name": "Jubail",
-        "description": "Comprehensive shifting services in Jubail Industrial City. We specialize in both residential and corporate relocations."
+        "description": "Company headquarters and comprehensive relocation hub in Jubail City Center and Jubail Industrial City. Specialized in residential, Royal Commission, and corporate relocations with rapid 10-20 min dispatch."
       },
       "khobar": {
         "name": "Khobar",

@@ -70,11 +70,11 @@ const ServiceAreaCard = ({ city }) => {
 
         {/* CTA Button */}
         <a
-          href={COMPANY_DETAILS.whatsapp}
+          href={`https://wa.me/966582230098?text=Hello%20Abu%20Usman%20Movers,%20I%20need%20moving%20services%20in%20${encodeURIComponent(cityName)}`}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Get a quote for moving services in ${cityName}`}
-          className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white bg-green-700 px-5 py-3 rounded-xl hover:bg-green-800 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+          className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-white bg-[#25D366] px-5 py-3 rounded-xl hover:bg-[#20bd5a] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
         >
           <FaWhatsapp className="text-base transition-transform" aria-hidden="true" />
           {t('serviceAreas.getQuote')}

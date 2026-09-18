@@ -134,15 +134,30 @@ const Hero = () => {
         </div>
       </div>
 
-      <m.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 z-10"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        aria-hidden="true"
+      <a
+        href="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          const target = document.getElementById('about');
+          if (target) {
+            const navOffset = 90;
+            const topPosition = target.getBoundingClientRect().top + window.scrollY - navOffset;
+            window.scrollTo({ top: topPosition, behavior: 'smooth' });
+            window.history.replaceState(null, '', '#about');
+          }
+        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-white/70 z-10 cursor-pointer hover:text-white transition-colors"
+        aria-label="Scroll to about section"
       >
-        <span className="text-xs uppercase tracking-widest mb-2 font-semibold">{t('hero.scrollDown')}</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white/70 to-transparent" />
-      </m.div>
+        <m.div
+          className="flex flex-col items-center"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          <span className="text-xs uppercase tracking-widest mb-2 font-semibold">{t('hero.scrollDown')}</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-white/70 to-transparent" />
+        </m.div>
+      </a>
     </section>
   );
 };

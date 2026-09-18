@@ -3,8 +3,8 @@ import { GoogleMap as GoogleMapReact, useJsApiLoader, Marker, InfoWindow } from 
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const center = {
-  lat: 24.7136,
-  lng: 46.7256,
+  lat: 27.0055,
+  lng: 49.6582,
 };
 
 const mapOptions = {
@@ -90,7 +90,7 @@ const GoogleMapComponent = () => {
 
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '';
   const isConfiguredKey = Boolean(apiKey && apiKey !== 'YOUR_API_KEY');
-  const mapsUrl = "https://maps.app.goo.gl/6esV6tzR6TXkTHoR6";
+  const mapsUrl = "https://www.google.com/maps?q=27.0055,49.6582";
 
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-map-script',
@@ -101,7 +101,7 @@ const GoogleMapComponent = () => {
   // This prevents the Google Maps "InvalidKey" console warning during development.
   if (!isConfiguredKey) {
     // Fallback UI when API key is missing: show a simple embedded Google Maps iframe (no API key required)
-    const embedSrc = `https://www.google.com/maps?q=${center.lat},${center.lng}&z=12&output=embed`;
+    const embedSrc = `https://www.google.com/maps?q=${center.lat},${center.lng}&z=14&output=embed`;
     return (
       <div className="relative w-full h-[300px] md:h-[400px] bg-gray-900 rounded-[20px] shadow-2xl p-0 overflow-hidden border border-gray-800">
         <iframe
@@ -113,7 +113,7 @@ const GoogleMapComponent = () => {
         />
         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-4">
           <div className="bg-black/60 rounded px-3 py-2 text-sm text-white">
-            Abu Usman Movers — Serving Riyadh, Jeddah, Dammam and more
+            Abu Usman Movers — Headquartered in Jubail City Center, Al Jubayl 35514
           </div>
           <a
             href={mapsUrl}
@@ -183,10 +183,10 @@ const GoogleMapComponent = () => {
         >
           {showInfoWindow && (
             <InfoWindow onCloseClick={() => setShowInfoWindow(false)}>
-              <div className="p-2 text-gray-900 max-w-[200px]">
+              <div className="p-2 text-gray-900 max-w-[220px]">
                 <p className="font-bold text-sm mb-0.5">Abu Usman Movers</p>
-                <p className="text-xs text-gray-600 mb-1">Heavy Transport</p>
-                <p className="text-xs text-gray-700">Saudi Arabia</p>
+                <p className="text-xs font-semibold text-primary mb-1">Heavy Transport Headquarters</p>
+                <p className="text-xs text-gray-700">4356 Riad, 8000, Jubail City Center, Al Jubayl 35514, Saudi Arabia</p>
               </div>
             </InfoWindow>
           )}

@@ -13,17 +13,11 @@ const SERVICE_LINKS = [
   { key: 'furnitureAssembly', path: '/furniture-assembly' },
 ];
 
-const RIYADH_FOOTER_DISTRICTS = [
-  { name: 'Al Malqa', nameAr: 'الملقا', slug: 'al-malqa' },
-  { name: 'Al Narjis', nameAr: 'النرجس', slug: 'al-narjis' },
-  { name: 'Al Yasmin', nameAr: 'الياسمين', slug: 'al-yasmin' },
-  { name: 'Al Olaya', nameAr: 'العليا', slug: 'al-olaya' },
-  { name: 'Al Sahafa', nameAr: 'الصحافة', slug: 'al-sahafa' },
-  { name: 'Al Rawdah', nameAr: 'الروضة', slug: 'al-rawdah' },
-  { name: 'Al Nakheel', nameAr: 'النخيل', slug: 'al-nakheel' },
-  { name: 'Hittin', nameAr: 'حطين', slug: 'hittin' },
-  { name: 'Al Aqiq', nameAr: 'العقيق', slug: 'al-aqiq' },
-  { name: 'Al Hamra', nameAr: 'الحمراء', slug: 'al-hamra' },
+import { jubailDistricts, nearbyCities } from '../data/jubailLocations';
+
+const JUBAIL_FOOTER_LOCATIONS = [
+  ...jubailDistricts.map(d => ({ name: d.nameEn, nameAr: d.nameAr, slug: d.slug })),
+  ...nearbyCities.slice(0, 8).map(c => ({ name: c.nameEn, nameAr: c.nameAr, slug: c.slug }))
 ];
 
 const Footer = () => {
@@ -140,19 +134,19 @@ const Footer = () => {
 
         </div>
 
-        {/* Riyadh Districts Quick Links Bar for Internal SEO Linking */}
+        {/* Jubail & Eastern Province Districts Quick Links Bar for Internal SEO Linking */}
         <div className="mt-10 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-gray-400">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-slate-200">
-                {isAr ? 'أحياء الرياض المغطاة:' : 'Riyadh Districts Served:'}
+                {isAr ? 'أحياء الجبيل والمنطقة الشرقية المغطاة:' : 'Jubail & Eastern Province Areas Served:'}
               </span>
               <Link to="/districts" className="text-accent hover:underline">
                 {isAr ? '(عرض الكل)' : '(View All)'}
               </Link>
             </div>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              {RIYADH_FOOTER_DISTRICTS.map((d) => (
+              {JUBAIL_FOOTER_LOCATIONS.map((d) => (
                 <Link
                   key={d.slug}
                   to={`/districts/${d.slug}`}

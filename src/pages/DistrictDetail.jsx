@@ -14,7 +14,7 @@ import {
 } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
-import { getDistrictBySlug, RIYADH_DISTRICTS } from '../data/districtsData';
+import { getLocationBySlug, ALL_LOCATIONS } from '../data/jubailLocations';
 import { COMPANY_DETAILS } from '../utils/constants';
 
 const DistrictDetail = () => {
@@ -22,48 +22,53 @@ const DistrictDetail = () => {
   const { i18n } = useTranslation();
   const isAr = i18n.language === 'ar';
 
-  const district = getDistrictBySlug(slug);
+  const district = getLocationBySlug(slug);
 
   if (!district) {
     return <Navigate to="/districts" replace />;
   }
 
-  const nearbyDistricts = RIYADH_DISTRICTS.filter((d) => d.slug !== district.slug).slice(0, 4);
+  const nearbyDistricts = ALL_LOCATIONS.filter((d) => d.slug !== district.slug).slice(0, 4);
+
+  const targetName = district.nameEn || district.name;
+  const targetNameAr = district.nameAr || district.name;
 
   const whatsappMessage = encodeURIComponent(
     isAr
-      ? `مرحباً خبراء أبو عثمان، أريد عرض سعر لنقل العفش في حي ${district.nameAr}، الرياض. أرجو تزويدي بالأسعار وأقرب موعد دينا متاح.`
-      : `Hello Abu Usman Movers, I need a moving quote for ${district.name} District, Riyadh. Please share pricing and closest Dina truck availability.`
+      ? `مرحباً شركة أبو عثمان، أريد عرض سعر لنقل العفش في ${targetNameAr} (${district.zoneAr || district.zone}). أرجو تزويدي بالأسعار وأقرب موعد دينا متاح.`
+      : `Hello Abu Usman Movers, I need a moving quote for ${targetName} (${district.zone}). Please share pricing and closest Dina truck availability.`
   );
 
+  const whatsappUrl = `https://wa.me/966582230098?text=Hello%20Abu%20Usman%20Movers,%20I%20need%20moving%20services%20in%20${encodeURIComponent(targetName)}`;
+
   const pageTitle = isAr
-    ? `نقل عفش حي ${district.nameAr} بالرياض | دينا وفك وتركيب | خبراء أبو عثمان`
-    : `Movers and Packers in ${district.name}, Riyadh | Abu Usman Movers`;
+    ? `نقل عفش ${targetNameAr} | دينا وفك وتركيب | شركة أبو عثمان بالجبيل`
+    : `Movers and Packers in ${targetName} | Abu Usman Movers Jubail`;
 
   const pageDesc = isAr
-    ? `أفضل خدمات نقل وتغليف العفش في حي ${district.nameAr} بالرياض. وصول دينا خلال ${district.responseTime}، فك وتركيب غرف نوم، تغليف بابلز، وحجز فوري عبر واتساب.`
-    : `Top movers and packers in ${district.name}, Riyadh. 25-30 min Dina truck dispatch, house shifting, furniture carpentry, bubble wrap & instant WhatsApp booking.`;
+    ? `أفضل خدمات نقل وتغليف العفش في ${targetNameAr} (${district.zoneAr || district.zone}). وصول دينا خلال ${district.responseTime || '20-30 دقيقة'}، فك وتركيب غرف نوم، تغليف بابلز، وحجز فوري عبر واتساب.`
+    : `Top movers and packers in ${targetName} (${district.zone}). 20-30 min Dina truck dispatch, house shifting, furniture carpentry, bubble wrap & instant WhatsApp booking from Jubail HQ.`;
 
   const districtFaqs = [
     {
-      question: `How fast can Abu Usman Movers arrive in ${district.name}, Riyadh?`,
-      questionAr: `ما هي سرعة وصول سيارات الدينا إلى حي ${district.nameAr} بالرياض؟`,
-      answer: `We have active moving crews and enclosed Dina trucks stationed in ${district.name} providing emergency and scheduled arrival within ${district.responseTime}.`,
+      question: `How fast can Abu Usman Movers arrive in ${targetName}?`,
+      questionAr: `ما هي سرعة وصول سيارات الدينا إلى ${targetNameAr}؟`,
+      answer: `From our central headquarters at 4356 Riad, 8000, Jubail City Center (35514), our standby Dina trucks reach ${targetName} within ${district.responseTime || '20 to 30 minutes'} with complete moving and packing tools.`,
     },
     {
-      question: `Do you provide furniture dismantling and assembly in ${district.name}?`,
-      questionAr: `هل توفرون نجارين لفك وتركيب الأثاث في حي ${district.nameAr}؟`,
-      answer: `Yes, our teams include skilled master carpenters who dismantle and reinstall Ikea furniture, large bedroom sets, dining tables, curtains, and wall shelves with full hardware protection.`,
+      question: `Do you provide professional carpentry dismantling and assembly in ${targetName}?`,
+      questionAr: `هل توفرون نجارين لفك وتركيب الأثاث في ${targetNameAr}؟`,
+      answer: `Yes, our crews in ${targetName} include certified master carpenters who dismantle and reinstall Ikea furniture, custom master bedroom sets, modular closets, dining tables, curtains, and wall-mounted electronics with full hardware preservation.`,
     },
     {
-      question: `What is the moving rate for an apartment or villa in ${district.name}?`,
-      questionAr: `ما هي أسعار نقل الشقق والفلل في حي ${district.nameAr}؟`,
-      answer: `Moving rates in ${district.name} are competitive and transparent in SAR, determined by the volume of items, number of bedrooms, and packing materials requested. Contact our WhatsApp support for an instant quote.`,
+      question: `What is the moving rate for an apartment or villa in ${targetName}?`,
+      questionAr: `ما هي أسعار نقل الشقق والفلل في ${targetNameAr}؟`,
+      answer: `Moving rates in ${targetName} are competitive flat rates in SAR, based on the volume of furniture, floor level, and required packaging materials. Contact our direct WhatsApp dispatcher at +966 058 223 0098 for an upfront quotation with zero hidden fees.`,
     },
     {
-      question: `Can you deliver furniture from ${district.name} to another Saudi city?`,
-      questionAr: `هل تنقلون الأثاث من حي ${district.nameAr} إلى مدن المملكة الأخرى؟`,
-      answer: `Yes, we operate daily intercity routes from ${district.name}, Riyadh to Jeddah, Dammam, Khobar, Jubail, Mecca, Medina, and all Saudi regions in enclosed, weatherproof Dina trucks.`,
+      question: `Do you offer relocation from ${targetName} to other Saudi cities like Riyadh or Dammam?`,
+      questionAr: `هل تنقلون الأثاث من ${targetNameAr} إلى مدن المملكة الأخرى كالرياض والدمام؟`,
+      answer: `Yes, Abu Usman Movers runs daily express routes connecting Jubail, ${targetName}, Dammam, Khobar, and Riyadh with enclosed weatherproof Dina trucks and full destination assembly.`,
     },
   ];
 
@@ -75,17 +80,18 @@ const DistrictDetail = () => {
         path={`/districts/${district.slug}`}
         district={district}
         keywords={[
-          `movers in ${district.name.toLowerCase()}`,
-          `نقل عفش حي ${district.nameAr}`,
-          `دينا نقل عفش ${district.nameAr}`,
-          `شركة نقل اثاث ${district.nameAr}`,
-          `packing services ${district.name.toLowerCase()}`,
-          `furniture moving ${district.name.toLowerCase()} riyadh`,
+          `movers in ${targetName.toLowerCase()}`,
+          `نقل عفش ${targetNameAr}`,
+          `دينا نقل عفش ${targetNameAr}`,
+          `شركة نقل اثاث ${targetNameAr}`,
+          `packing services ${targetName.toLowerCase()}`,
+          `furniture moving ${targetName.toLowerCase()} jubail`,
+          `نقل اثاث الجبيل`,
         ]}
         breadcrumbs={[
           { name: 'Home', url: 'https://abuusmanmovers.com' },
-          { name: 'Riyadh Districts', url: 'https://abuusmanmovers.com/districts' },
-          { name: district.name, url: `https://abuusmanmovers.com/districts/${district.slug}` },
+          { name: isAr ? 'مناطق التغطية بالجبيل' : 'Jubail & Service Areas', url: 'https://abuusmanmovers.com/districts' },
+          { name: isAr ? targetNameAr : targetName, url: `https://abuusmanmovers.com/districts/${district.slug}` },
         ]}
         faq={districtFaqs}
       />
@@ -107,8 +113,8 @@ const DistrictDetail = () => {
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>
                 {isAr
-                  ? `طواقم وسيارات دينا نشطة حالياً في حي ${district.nameAr} (وصول خلال ${district.responseTime})`
-                  : `Active Dina Trucks in ${district.name} (Arrival in ${district.responseTime})`}
+                  ? `طواقم وسيارات دينا نشطة حالياً في ${targetNameAr} (وصول خلال ${district.responseTime || '20-30 دقيقة'})`
+                  : `Active Dina Trucks in ${targetName} (Arrival in ${district.responseTime || '20-30 Mins'})`}
               </span>
             </m.div>
 
@@ -118,8 +124,8 @@ const DistrictDetail = () => {
               className="text-3xl md:text-5xl font-bold text-white mb-4"
             >
               {isAr
-                ? `نقل وتغليف عفش في حي ${district.nameAr} بالرياض`
-                : `Movers and Packers in ${district.name}, Riyadh`}
+                ? `نقل وتغليف عفش في ${targetNameAr} | شركة أبو عثمان`
+                : `Movers and Packers in ${targetName} | Abu Usman Movers`}
             </m.h1>
 
             <p className="text-slate-200 text-base md:text-lg mb-8 leading-relaxed">
@@ -129,17 +135,17 @@ const DistrictDetail = () => {
             {/* Quick Action CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href={`https://wa.me/9660582230098?text=${whatsappMessage}`}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all shadow-lg hover:scale-105"
+                className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-white bg-[#25D366] hover:bg-[#20bd5a] transition-all shadow-lg hover:scale-105"
               >
                 <FaWhatsapp className="text-xl" />
-                <span>{isAr ? `احجز دينا حي ${district.nameAr} واتساب` : `WhatsApp ${district.name} Crew`}</span>
+                <span>{isAr ? `احجز دينا ${targetNameAr} واتساب` : `Get a Quote on WhatsApp`}</span>
               </a>
 
               <a
-                href={`tel:${COMPANY_DETAILS.phone.replace(/[^0-9+]/g, '')}`}
+                href={`tel:${COMPANY_DETAILS.phoneRaw}`}
                 className="flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-primary bg-white hover:bg-slate-100 transition-all shadow-lg hover:scale-105"
               >
                 <FaPhoneAlt className="text-sm" />
@@ -162,7 +168,7 @@ const DistrictDetail = () => {
                 <span className="text-xs text-gray-500 uppercase font-semibold">
                   {isAr ? 'متوسط وقت الوصول' : 'Dispatch Time'}
                 </span>
-                <p className="text-xl font-bold text-gray-900">{district.responseTime}</p>
+                <p className="text-xl font-bold text-gray-900">{district.responseTime || '20-30 Mins'}</p>
                 <span className="text-xs text-green-600 font-medium">
                   {isAr ? 'متاح طوال 24 ساعة' : 'Active 24/7 coverage'}
                 </span>
@@ -175,11 +181,11 @@ const DistrictDetail = () => {
               </div>
               <div>
                 <span className="text-xs text-gray-500 uppercase font-semibold">
-                  {isAr ? 'سيارات النقل في الحي' : 'Local Standby Fleet'}
+                  {isAr ? 'الأسطول المتاح في المنطقة' : 'Local Standby Fleet'}
                 </span>
-                <p className="text-xl font-bold text-gray-900">{district.trucksOnStandby}</p>
+                <p className="text-xl font-bold text-gray-900">{district.trucksOnStandby || 'Enclosed Dina Fleet'}</p>
                 <span className="text-xs text-slate-500">
-                  {isAr ? district.crewsAvailable : district.crewsAvailable}
+                  {district.crewsAvailable || (isAr ? 'فرق عمل متخصصة' : 'Certified Moving Crews')}
                 </span>
               </div>
             </div>
@@ -202,117 +208,96 @@ const DistrictDetail = () => {
             </div>
           </div>
 
-          {/* Detailed Features & Services for this District */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Key Features & Moving Highlights */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <span className="text-accent font-semibold uppercase text-xs tracking-wider">
-                {isAr ? `خدماتنا في حي ${district.nameAr}` : `Specialized Relocation`}
+              <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-2 block">
+                {isAr ? 'خدماتنا المتخصصة' : 'Custom Tailored Services'}
               </span>
-              <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mt-2 mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
                 {isAr
-                  ? `لماذا يفضل سكان حي ${district.nameAr} خدمات أبو عثمان؟`
-                  : `Why Residents in ${district.name} Choose Abu Usman Movers`}
+                  ? `لماذا يفضل سكان ${targetNameAr} خدمات شركة أبو عثمان؟`
+                  : `Why Residents in ${targetName} Choose Abu Usman Movers`}
               </h2>
-              <div className="space-y-4">
-                {(isAr ? district.highlightsAr : district.highlights).map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <FaCheckCircle className="text-emerald-500 text-lg shrink-0 mt-1" />
-                    <span className="text-gray-700 text-base">{item}</span>
-                  </div>
+              <ul className="space-y-4">
+                {(isAr ? district.highlightsAr || district.highlights : district.highlights)?.map((highlight, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <FaCheckCircle className="text-emerald-500 mt-1 shrink-0" />
+                    <span className="text-gray-700 text-base leading-relaxed">{highlight}</span>
+                  </li>
                 ))}
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-gray-100 flex flex-wrap items-center gap-2">
-                <span className="text-xs font-bold text-gray-400 uppercase mr-2">
-                  {isAr ? 'معالم قريبة مغطاة:' : 'Key Landmarks:'}
-                </span>
-                {(isAr ? district.landmarksAr : district.landmarks).map((landmark, idx) => (
-                  <span
-                    key={idx}
-                    className="inline-flex items-center gap-1 text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded-lg"
-                  >
-                    <FaMapMarkerAlt className="text-accent text-[10px]" />
-                    {landmark}
-                  </span>
-                ))}
-              </div>
+              </ul>
             </div>
 
-            {/* Service Capabilities Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                <FaBoxes className="text-3xl text-accent mb-3" />
-                <h3 className="font-bold text-gray-900 text-lg mb-2">
-                  {isAr ? 'تغليف متقدم' : 'Bubble Packing'}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {isAr
-                    ? 'طبقات بابلز وكراتين لحماية الزجاج والأجهزة الحساسة.'
-                    : 'Multi-layer bubble wrap & cartons safeguarding fragile glassware.'}
-                </p>
-              </div>
+            {/* Landmarks & Service Area Map Box */}
+            <div className="bg-gradient-to-br from-slate-900 to-primary p-8 rounded-3xl text-white shadow-xl">
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <FaMapMarkerAlt className="text-accent" />
+                <span>{isAr ? `تغطية ${targetNameAr} والمناطق المجاورة` : `${targetName} Coverage Areas`}</span>
+              </h3>
+              <p className="text-slate-300 text-sm mb-6 leading-relaxed">
+                {isAr
+                  ? `سيارات الدينا المغلقة تغطي كافة قطاعات ${targetNameAr} والشوارع الرئيسية والمجمعات السكنية مع التزام تام بالسلامة.`
+                  : `Our transport vehicles serve every sector, residential compound, and avenue across ${targetName} with full protection.`}
+              </p>
 
-              <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                <FaTools className="text-3xl text-emerald-600 mb-3" />
-                <h3 className="font-bold text-gray-900 text-lg mb-2">
-                  {isAr ? 'نجار فك وتركيب' : 'Carpentry Services'}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {isAr
-                    ? 'فك وتركيب احترافي لغرف النوم، الدواليب والمطابخ.'
-                    : 'Expert master carpenters for bedrooms, wardrobes & TV mounts.'}
-                </p>
-              </div>
+              {district.landmarks && district.landmarks.length > 0 && (
+                <div className="mb-6">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold block mb-2">
+                    {isAr ? 'أهم المعالم القريبة المغطاة:' : 'Prominent Landmarks Served:'}
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {(isAr ? district.landmarksAr || district.landmarks : district.landmarks).map((lm, idx) => (
+                      <span key={idx} className="bg-white/10 px-3 py-1 rounded-lg text-xs font-medium text-slate-200">
+                        {lm}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-              <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                <FaTruck className="text-3xl text-blue-600 mb-3" />
-                <h3 className="font-bold text-gray-900 text-lg mb-2">
-                  {isAr ? 'دينا مغلقة حديثة' : 'Closed Dina Trucks'}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {isAr
-                    ? 'شاحنات دينا نظيفة تحمي أثاثك من حرارة وغبار الرياض.'
-                    : 'Padded, weather-tight Dina trucks shielding furniture from dust.'}
-                </p>
-              </div>
-
-              <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                <FaClock className="text-3xl text-amber-500 mb-3" />
-                <h3 className="font-bold text-gray-900 text-lg mb-2">
-                  {isAr ? 'خدمة 24 ساعة' : '24/7 Availability'}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {isAr
-                    ? 'جاهزون دائماً للنقل الفوري أو المجدول في أي وقت.'
-                    : 'Round-the-clock emergency and scheduled relocation across KSA.'}
-                </p>
+              <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <span className="text-xs text-slate-400 block">{isAr ? 'المقر الإداري الرئيسي' : 'Operations Base'}</span>
+                  <span className="text-sm font-semibold text-white">4356 Riad, 8000, Jubail Center</span>
+                </div>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs px-4 py-2.5 rounded-xl transition-colors shrink-0"
+                >
+                  {isAr ? 'طلب معاينة مجانية' : 'Book Moving Crew'}
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* District FAQ Accordion */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="text-center mb-10">
-            <span className="text-xs font-semibold text-accent uppercase tracking-wider">
-              {isAr ? 'أسئلة شائعة' : 'Local Questions'}
+      {/* District Specific FAQs */}
+      <section className="py-16 bg-gray-50 border-b border-gray-100" aria-label="District FAQs">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-4xl">
+          <div className="text-center mb-12">
+            <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-2 block">
+              {isAr ? 'الأسئلة الشائعة' : 'Common Questions'}
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-2">
+            <h2 className="text-3xl font-bold text-gray-900">
               {isAr
-                ? `الأسئلة المتكررة حول نقل العفش في حي ${district.nameAr}`
-                : `Frequently Asked Questions in ${district.name}`}
+                ? `الأسئلة الشائعة حول نقل الأثاث في ${targetNameAr}`
+                : `Frequently Asked Questions About Moving in ${targetName}`}
             </h2>
           </div>
 
           <div className="space-y-4">
             {districtFaqs.map((faq, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
-                <h3 className="font-bold text-gray-900 text-base md:text-lg mb-2">
+              <div key={idx} className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
                   {isAr ? faq.questionAr : faq.question}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {isAr ? faq.answer : faq.answer}
+                </p>
               </div>
             ))}
           </div>
@@ -320,65 +305,48 @@ const DistrictDetail = () => {
       </section>
 
       {/* Nearby Districts Internal Linking Hub */}
-      <section className="py-16 bg-white border-t border-gray-200">
-        <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            {isAr ? 'أحياء أخرى مخدومة بالقرب منك' : 'Other Nearby Riyadh Districts We Serve'}
-          </h2>
-          <p className="text-gray-500 text-sm mb-8">
-            {isAr
-              ? 'تغطي سياراتنا كافة مناطق الرياض الشمالية والوسطى والشرقية.'
-              : 'Our moving trucks cover every sector of Riyadh with rapid response.'}
-          </p>
+      <section className="py-16 bg-white" aria-label="Nearby Locations">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
+            <div>
+              <span className="text-accent font-semibold tracking-wider text-sm uppercase mb-1 block">
+                {isAr ? 'المزيد من مناطق التغطية' : 'Explore More Locations'}
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                {isAr ? 'أحياء ومدن مجاورة نخدمها أيضاً' : 'Nearby Districts & Cities We Also Serve'}
+              </h2>
+            </div>
+            <Link
+              to="/districts"
+              className="mt-4 md:mt-0 text-accent hover:underline font-semibold text-sm flex items-center gap-1"
+            >
+              <span>{isAr ? 'عرض كافة الأحياء' : 'View All Locations'}</span>
+              <span>&rarr;</span>
+            </Link>
+          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {nearbyDistricts.map((item) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {nearbyDistricts.map((d) => (
               <Link
-                key={item.slug}
-                to={`/districts/${item.slug}`}
-                className="p-4 rounded-xl border border-gray-200 hover:border-accent hover:bg-accent/5 transition-all text-center group"
+                key={d.slug}
+                to={`/districts/${d.slug}`}
+                className="group bg-gray-50 border border-gray-200 rounded-2xl p-5 hover:bg-primary hover:border-primary transition-all duration-300 shadow-sm hover:shadow-lg"
               >
-                <span className="block font-bold text-gray-900 group-hover:text-accent transition-colors">
-                  {isAr ? item.nameAr : item.name}
-                </span>
-                <span className="text-xs text-gray-500">{item.responseTime}</span>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded bg-white text-gray-700 group-hover:bg-white/20 group-hover:text-white">
+                    {d.zone}
+                  </span>
+                  <FaMapMarkerAlt className="text-accent group-hover:text-accent-light" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-white transition-colors">
+                  {isAr ? d.nameAr || d.nameEn : d.nameEn || d.name}
+                </h3>
+                <p className="text-xs text-gray-500 group-hover:text-slate-300 mt-1">
+                  {d.responseTime ? `${d.responseTime} dispatch` : 'Daily service'}
+                </p>
               </Link>
             ))}
           </div>
-
-          <div className="mt-8">
-            <Link
-              to="/districts"
-              className="inline-flex items-center gap-2 text-accent font-semibold hover:underline text-sm"
-            >
-              {isAr ? 'عرض جميع أحياء الرياض (10 أحياء) ←' : 'View all 10 Riyadh districts →'}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom Floating CTA Bar for this District */}
-      <section className="py-12 bg-primary text-white text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">
-            {isAr
-              ? `هل تخطط للانتقال في حي ${district.nameAr}؟`
-              : `Ready to Move in ${district.name}?`}
-          </h2>
-          <p className="text-slate-300 text-sm md:text-base max-w-xl mx-auto mb-6">
-            {isAr
-              ? 'تواصل معنا الآن عبر واتساب للحصول على عرض سعر فوري وحجز سيارة دينا خلال دقائق.'
-              : 'Contact our dispatch team now via WhatsApp for a verified free quote and prompt truck reservation.'}
-          </p>
-          <a
-            href={`https://wa.me/9660582230098?text=${whatsappMessage}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-all shadow-lg hover:scale-105"
-          >
-            <FaWhatsapp className="text-xl" />
-            <span>{isAr ? 'تواصل معنا عبر واتساب الآن' : 'Get WhatsApp Quote Now'}</span>
-          </a>
         </div>
       </section>
     </>

@@ -9,8 +9,7 @@ const navItems = [
   { nameKey: 'navbar.home', path: '/', sectionId: 'top' },
   { nameKey: 'navbar.about', path: '/', sectionId: 'about' },
   { nameKey: 'navbar.services', path: '/', sectionId: 'services' },
-  { nameKey: 'navbar.serviceAreas', path: '/', sectionId: 'service-areas' },
-  { nameKey: 'navbar.districts', path: '/districts', sectionId: null },
+  { nameKey: 'navbar.districts', path: '/districts', sectionId: 'service-areas' },
   { nameKey: 'navbar.gallery', path: '/', sectionId: 'gallery' },
   { nameKey: 'navbar.contact', path: '/', sectionId: 'contact' },
 ];
@@ -100,51 +99,113 @@ const LanguageSwitcher = ({ variant, scrolled }) => {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('top');
+  const [activeSection, setActiveSection] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      return window.location.hash.replace('#', '') || 'top';
+    }
+    return 'top';
+  });
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const isManualScrollingRef = useRef(false);
+  const manualScrollTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
+      // Only track sections and update URL when on homepage ('/')
+      if (location.pathname !== '/') return;
+
+      // If user recently clicked a nav link, skip scroll-based URL overwrite during smooth scroll animation
+      if (isManualScrollingRef.current) return;
+
       const sections = ['top', 'about', 'services', 'service-areas', 'gallery', 'why-choose-us', 'testimonials', 'faq', 'contact'];
       const scrollPosition = window.scrollY + 160;
+      const isBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
 
       let currentSection = 'top';
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (element && scrollPosition >= element.offsetTop) {
-          currentSection = sectionId;
+      if (isBottom) {
+        currentSection = 'contact';
+      } else {
+        for (const sectionId of sections) {
+          const element = document.getElementById(sectionId);
+          if (element && scrollPosition >= element.offsetTop) {
+            currentSection = sectionId;
+          }
         }
       }
+
       setActiveSection(currentSection);
+
+      // Update URL hash without causing page reload or jump
+      const currentHash = window.location.hash;
+      const targetHash = currentSection === 'top' ? '' : `#${currentSection}`;
+      if (currentHash !== targetHash) {
+        const newUrl = targetHash
+          ? `${window.location.pathname}${window.location.search}${targetHash}`
+          : `${window.location.pathname}${window.location.search}`;
+        window.history.replaceState(null, '', newUrl);
+      }
     };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (manualScrollTimeoutRef.current) {
+        clearTimeout(manualScrollTimeoutRef.current);
+      }
+    };
+  }, [location.pathname]);
 
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
 
   const scrollToSection = (sectionId) => {
-    const target = document.getElementById(sectionId);
-    if (!target) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
+    isManualScrollingRef.current = true;
+    if (manualScrollTimeoutRef.current) {
+      clearTimeout(manualScrollTimeoutRef.current);
     }
 
-    const navOffset = 90;
-    const topPosition = target.getBoundingClientRect().top + window.scrollY - navOffset;
-    window.scrollTo({ top: topPosition, behavior: 'smooth' });
     setActiveSection(sectionId);
+
+    // Immediately update URL hash
+    if (location.pathname === '/') {
+      const targetHash = sectionId === 'top' ? '' : `#${sectionId}`;
+      const currentHash = window.location.hash;
+      if (currentHash !== targetHash) {
+        const newUrl = targetHash
+          ? `${window.location.pathname}${window.location.search}${targetHash}`
+          : `${window.location.pathname}${window.location.search}`;
+        window.history.replaceState(null, '', newUrl);
+      }
+    }
+
+    const target = document.getElementById(sectionId);
+    if (!target || sectionId === 'top') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const navOffset = 90;
+      const topPosition = target.getBoundingClientRect().top + window.scrollY - navOffset;
+      window.scrollTo({ top: topPosition, behavior: 'smooth' });
+    }
+
+    manualScrollTimeoutRef.current = setTimeout(() => {
+      isManualScrollingRef.current = false;
+    }, 1000);
   };
 
   const handleNavClick = (sectionId, path = '/') => {
+    if (location.pathname === '/' && sectionId) {
+      scrollToSection(sectionId);
+      setIsOpen(false);
+      return;
+    }
+
     if (path && path !== '/') {
       navigate(path);
       setIsOpen(false);
@@ -152,8 +213,9 @@ const Navbar = () => {
     }
 
     if (location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => scrollToSection(sectionId), 120);
+      const hash = sectionId === 'top' ? '' : `#${sectionId}`;
+      navigate(`/${hash}`);
+      setTimeout(() => scrollToSection(sectionId), 150);
       setIsOpen(false);
       return;
     }
@@ -189,7 +251,7 @@ const Navbar = () => {
             <ul className="flex items-center gap-5" role="menubar">
               {navItems.map((link) => {
                 const isActive = link.path === '/districts'
-                  ? location.pathname.startsWith('/districts')
+                  ? location.pathname.startsWith('/districts') || (location.pathname === '/' && activeSection === 'service-areas')
                   : activeSection === link.sectionId;
                 return (
                   <li key={link.nameKey} role="none">
@@ -296,7 +358,7 @@ const Navbar = () => {
         <ul className="flex flex-col p-5 gap-2 flex-1" role="menu">
           {navItems.map((link) => {
             const isActive = link.path === '/districts'
-              ? location.pathname.startsWith('/districts')
+              ? location.pathname.startsWith('/districts') || (location.pathname === '/' && activeSection === 'service-areas')
               : activeSection === link.sectionId;
             return (
               <li key={link.nameKey} role="none">
