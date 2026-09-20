@@ -19,6 +19,10 @@ export const COMPANY_DETAILS = {
     lat: 27.0055,
     lng: 49.6582,
   },
+  coordinates: {
+    lat: 27.0055,
+    lng: 49.6582,
+  },
   licenseId: "2507934160",
   licenseType: "Heavy Transport",
 };

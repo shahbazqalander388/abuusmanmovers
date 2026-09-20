@@ -63,8 +63,8 @@ const SEO = ({
     ? keywords
     : DEFAULT_KEYWORDS.join(', ');
 
-  const lat = district?.geo?.lat || district?.lat || COMPANY_DETAILS.coordinates.lat;
-  const lng = district?.geo?.lng || district?.lng || COMPANY_DETAILS.coordinates.lng;
+  const lat = district?.geo?.lat || district?.lat || COMPANY_DETAILS.geo?.lat || COMPANY_DETAILS.coordinates?.lat || 27.0055;
+  const lng = district?.geo?.lng || district?.lng || COMPANY_DETAILS.geo?.lng || COMPANY_DETAILS.coordinates?.lng || 49.6582;
   const placeName = district
     ? `${district.nameEn || district.name}, ${district.zone || 'Eastern Province'}, Saudi Arabia`
     : 'Al Jubail, Eastern Province, Saudi Arabia';
