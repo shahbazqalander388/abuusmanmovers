@@ -2,7 +2,6 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { FaMapMarkerAlt, FaWhatsapp, FaCheckCircle } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-import { COMPANY_DETAILS } from '../../utils/constants';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },

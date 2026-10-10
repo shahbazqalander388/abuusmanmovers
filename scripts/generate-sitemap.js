@@ -11,7 +11,7 @@ const today = new Date().toISOString().split('T')[0];
 
 const sitemapEntries = [
   // Homepage
-  { path: '', changefreq: 'daily', priority: '1.0' },
+  { path: '/', changefreq: 'daily', priority: '1.0' },
 
   // Core Service Routes
   { path: '/services', changefreq: 'weekly', priority: '0.9' },

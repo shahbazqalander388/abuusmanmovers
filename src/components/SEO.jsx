@@ -41,7 +41,7 @@ const SEO = ({
 }) => {
   const { i18n } = useTranslation();
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  const canonicalUrl = `${BASE_URL}${normalizedPath === '/' ? '' : normalizedPath}`;
+  const canonicalUrl = normalizedPath === '/' ? `${BASE_URL}/` : `${BASE_URL}${normalizedPath}`;
 
   const defaultTitle =
     'Movers and Packers in Jubail & Eastern Province | Abu Usman Movers | House & Furniture Relocation';

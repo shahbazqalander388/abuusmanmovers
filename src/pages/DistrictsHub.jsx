@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { m } from 'framer-motion';
-import { FaMapMarkerAlt, FaClock, FaTruck, FaWhatsapp, FaArrowRight, FaShieldAlt, FaPhoneAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaClock, FaTruck, FaWhatsapp, FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import { ALL_LOCATIONS } from '../data/jubailLocations';

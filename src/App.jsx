@@ -5,6 +5,7 @@ import { useTranslation, I18nextProvider } from 'react-i18next';
 import { LazyMotion } from 'framer-motion';
 import i18n, { isRTL } from './i18n';
 import Layout from './components/Layout';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Load Framer Motion animation features lazily (async) to avoid blocking paint
 const loadFeatures = () => import('framer-motion').then((m) => m.domAnimation);
@@ -100,27 +101,29 @@ function App() {
         <Router>
           <ScrollToTop />
           <DirectionManager />
-          <Layout>
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/service-areas" element={<ServiceAreasPage />} />
-                <Route path="/districts" element={<DistrictsHub />} />
-                <Route path="/districts/:slug" element={<DistrictDetail />} />
-                <Route path="/house-moving" element={<ServiceDetail serviceSlug="house-moving" />} />
-                <Route path="/villa-moving" element={<ServiceDetail serviceSlug="villa-moving" />} />
-                <Route path="/furniture-moving" element={<ServiceDetail serviceSlug="furniture-moving" />} />
-                <Route path="/office-relocation" element={<ServiceDetail serviceSlug="office-relocation" />} />
-                <Route path="/packing-services" element={<ServiceDetail serviceSlug="packing-services" />} />
-                <Route path="/furniture-assembly" element={<ServiceDetail serviceSlug="furniture-assembly" />} />
-                <Route path="/services/:slug" element={<ServiceDetail />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/contact" element={<Contact />} />
-              </Routes>
-            </Suspense>
-          </Layout>
+          <ErrorBoundary>
+            <Layout>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/service-areas" element={<ServiceAreasPage />} />
+                  <Route path="/districts" element={<DistrictsHub />} />
+                  <Route path="/districts/:slug" element={<DistrictDetail />} />
+                  <Route path="/house-moving" element={<ServiceDetail serviceSlug="house-moving" />} />
+                  <Route path="/villa-moving" element={<ServiceDetail serviceSlug="villa-moving" />} />
+                  <Route path="/furniture-moving" element={<ServiceDetail serviceSlug="furniture-moving" />} />
+                  <Route path="/office-relocation" element={<ServiceDetail serviceSlug="office-relocation" />} />
+                  <Route path="/packing-services" element={<ServiceDetail serviceSlug="packing-services" />} />
+                  <Route path="/furniture-assembly" element={<ServiceDetail serviceSlug="furniture-assembly" />} />
+                  <Route path="/services/:slug" element={<ServiceDetail />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </Suspense>
+            </Layout>
+          </ErrorBoundary>
         </Router>
       </HelmetProvider>
     </I18nextProvider>

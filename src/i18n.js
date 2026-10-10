@@ -1,7 +1,18 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-const savedLanguage = typeof localStorage !== 'undefined' ? localStorage.getItem('language') || 'en' : 'en';
+const getSavedLanguage = () => {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('language') || 'en';
+    }
+  } catch {
+    // ignore restricted storage access in crawlers or private mode
+  }
+  return 'en';
+};
+
+const savedLanguage = getSavedLanguage();
 const fallbackLng = 'en';
 
 const loadTranslation = async (lng) => {
@@ -37,7 +48,11 @@ export const initI18n = async () => {
     const isRtl = ['ar', 'ur'].includes(lng);
     document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
     document.documentElement.lang = lng;
-    localStorage.setItem('language', lng);
+    try {
+      localStorage.setItem('language', lng);
+    } catch {
+      // ignore storage write errors
+    }
   });
 
   const initialRtl = ['ar', 'ur'].includes(savedLanguage);

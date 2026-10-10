@@ -9,8 +9,6 @@ import {
   FaClock,
   FaCheckCircle,
   FaShieldAlt,
-  FaBoxes,
-  FaTools,
 } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
@@ -39,7 +37,7 @@ const DistrictDetail = () => {
       : `Hello Abu Usman Movers, I need a moving quote for ${targetName} (${district.zone}). Please share pricing and closest Dina truck availability.`
   );
 
-  const whatsappUrl = `https://wa.me/966582230098?text=Hello%20Abu%20Usman%20Movers,%20I%20need%20moving%20services%20in%20${encodeURIComponent(targetName)}`;
+  const whatsappUrl = `https://wa.me/966582230098?text=${whatsappMessage}`;
 
   const pageTitle = isAr
     ? `نقل عفش ${targetNameAr} | دينا وفك وتركيب | شركة أبو عثمان بالجبيل`

@@ -1,5 +1,5 @@
 import { COMPANY_DETAILS, SERVICES } from '../utils/constants';
-import { jubailDistricts, nearbyCities } from './jubailLocations';
+import { jubailDistricts } from './jubailLocations';
 
 export const BASE_URL = 'https://abuusmanmovers.com';
 
