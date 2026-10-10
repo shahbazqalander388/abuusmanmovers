@@ -220,8 +220,8 @@ export const buildFullJsonLdGraph = ({
     name: COMPANY_DETAILS.name,
     alternateName: 'خبراء أبو عثمان لنقل وتغليف الأثاث',
     url: BASE_URL,
-    logo: `${BASE_URL}/favicon.svg`,
-    image: 'https://res.cloudinary.com/dai2g47e4/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1784590173/gallery-image-03_qc3flt.jpg',
+    logo: COMPANY_DETAILS.logo,
+    image: COMPANY_DETAILS.logo,
     sameAs: [
       COMPANY_DETAILS.facebook,
       COMPANY_DETAILS.googleMaps,
@@ -274,7 +274,7 @@ export const buildFullJsonLdGraph = ({
       ? `شركة ابو عثمان لنقل العفش وتغليف الأثاث - ${district.nameAr || district.name}`
       : COMPANY_PRIMARY_SCHEMA.alternateName,
     url: currentUrl,
-    logo: `${BASE_URL}/favicon.svg`,
+    logo: COMPANY_DETAILS.logo,
     image: 'https://abuusmanmovers.com/images/og-abu-usman.jpg',
     telephone: '+966582230098',
     email: COMPANY_DETAILS.email,

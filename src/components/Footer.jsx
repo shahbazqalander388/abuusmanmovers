@@ -32,7 +32,14 @@ const Footer = () => {
 
           {/* Company Info */}
           <div className="flex flex-col gap-4">
-            <Link to="/" className="inline-block">
+            <Link to="/" className="inline-flex items-center gap-3 group">
+              <img
+                src="https://res.cloudinary.com/dai2g47e4/image/upload/f_auto,q_auto,w_96,h_96/v1791320864/WhatsApp_Image_2026-10-06_at_5.37.59_PM_kwkr2j.jpg"
+                alt="Abu Usman Movers Logo"
+                width="48"
+                height="48"
+                className="h-12 w-12 rounded-xl object-cover ring-1 ring-white/20 shadow-md transition-transform duration-200 group-hover:scale-105"
+              />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold leading-none text-white">ABU USMAN</span>
                 <span className="text-sm font-semibold tracking-wider text-accent-light">MOVERS</span>

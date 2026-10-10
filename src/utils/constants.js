@@ -2,6 +2,7 @@ export const COMPANY_DETAILS = {
   name: "Abu Usman Movers",
   nameAr: "شركة ابو عثمان لنقل العفش وتغليف الأثاث",
   tagline: "Fast, Safe & Professional Moving Services in Saudi Arabia",
+  logo: "https://res.cloudinary.com/dai2g47e4/image/upload/v1791320864/WhatsApp_Image_2026-10-06_at_5.37.59_PM_kwkr2j.jpg",
   phone: "+966 058 223 0098",
   phoneRaw: "+966582230098",
   whatsapp: "https://wa.me/966582230098",

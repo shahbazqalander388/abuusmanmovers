@@ -235,12 +235,19 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <button type="button" onClick={() => handleNavClick('top', '/')} className="flex items-center gap-2">
+          <button type="button" onClick={() => handleNavClick('top', '/')} className="flex items-center gap-3 text-start group">
+            <img
+              src="https://res.cloudinary.com/dai2g47e4/image/upload/f_auto,q_auto,w_96,h_96/v1791320864/WhatsApp_Image_2026-10-06_at_5.37.59_PM_kwkr2j.jpg"
+              alt="Abu Usman Movers Logo"
+              width="44"
+              height="44"
+              className="h-10 w-10 sm:h-11 sm:w-11 rounded-xl object-cover shadow-md ring-1 ring-white/20 transition-transform duration-200 group-hover:scale-105"
+            />
             <div className="flex flex-col">
-              <span className="text-2xl font-bold leading-none text-white">
+              <span className="text-xl sm:text-2xl font-black leading-none text-white tracking-tight">
                 ABU USMAN
               </span>
-              <span className="text-sm font-semibold tracking-wider text-white">
+              <span className="text-xs sm:text-sm font-bold tracking-widest text-accent-light">
                 MOVERS
               </span>
             </div>
